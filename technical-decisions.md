@@ -55,11 +55,41 @@ _The engineering source of truth for Safe Harbor. Document every significant dec
 
 ---
 
+## Internationalization (i18n)
+
+**Languages:** Hebrew (`he`) and Russian (`ru`) — LOCKED
+**Text direction:** Hebrew = RTL, Russian = LTR — layout must mirror between languages
+**Routing strategy:** `/he/` and `/ru/` route prefixes via Next.js i18n
+
+**Font strategy:**
+- Hebrew: Heebo or Assistant (supports Hebrew + Latin)
+- Russian: Inter or DM Sans (supports Cyrillic + Latin)
+- These are separate font loads per locale — not one font for both
+
+**Implementation approach:** next-intl library for translations and locale routing
+
+**RTL implementation:** Tailwind CSS supports RTL via `dir` attribute on `<html>`. Use `rtl:` prefix utilities where layout needs to mirror. Set `dir="rtl"` for Hebrew locale, `dir="ltr"` for Russian.
+
+**Content files:** One JSON or MDX file per page per language:
+```
+/content
+  /he
+    home.json
+    about.json
+    services.json
+  /ru
+    home.json
+    about.json
+    services.json
+```
+
+---
+
 ## Content Strategy
 
-**Content approach:** TBD — hardcoded MDX / headless CMS / JSON files
-**CMS (if used):** TBD
-**Languages:** TBD — single language / Hebrew + English
+**Content approach:** JSON files per locale (see i18n section above)
+**CMS (if used):** TBD — may add later if Sonya wants to update content herself
+**Languages:** Hebrew and Russian — LOCKED
 
 ---
 

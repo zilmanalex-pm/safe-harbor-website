@@ -5,8 +5,13 @@ _The visual source of truth for Safe Harbor. Lock decisions here as they're made
 
 ## Typography
 
-**Heading font:** TBD
-**Body font:** TBD
+**Script support required:** Hebrew (RTL) and Russian Cyrillic (LTR) — two separate font stacks
+**Hebrew font (heading + body):** Heebo — DRAFT (clean, readable, works for both heading and body in Hebrew)
+**Russian font (heading + body):** Inter — DRAFT (excellent Cyrillic support, pairs visually with Heebo)
+**Note:** Fonts load per locale. Both should feel warm and approachable, not clinical.
+
+**Heading font (Latin fallback):** TBD
+**Body font (Latin fallback):** TBD
 **Font scale:**
 
 | Label | Size | Weight | Use |
@@ -21,15 +26,19 @@ _The visual source of truth for Safe Harbor. Lock decisions here as they're made
 
 ## Color Palette
 
-| Name | Hex | Use |
-|------|-----|-----|
-| Primary | TBD | Main brand color, CTAs |
-| Accent | TBD | Highlights, links |
-| Neutral Dark | TBD | Headings, body text |
-| Neutral Light | TBD | Borders, dividers |
-| Background | TBD | Page background |
+Derived directly from Sonya's professional photo — warm cream, natural wood, soft sage from the book spines. The site should feel like an extension of the room she's sitting in.
 
-**Colors to avoid:** TBD
+| Name | Hex | Use | Status |
+|------|-----|-----|--------|
+| Background | #F7F4F0 | Page background — warm off-white, not clinical white | DRAFT |
+| Text | #2D2926 | Headings and body — warm dark, not pure black | DRAFT |
+| Primary | #5E8C85 | CTAs, links, key accents — sage/teal from book spines | DRAFT |
+| Warm Neutral | #E8E0D5 | Section backgrounds, dividers — pulled from her blazer | DRAFT |
+| Soft White | #FDFBF9 | Cards, input fields — slightly warmer than pure white | DRAFT |
+
+**Colors to avoid:** Clinical white (#FFFFFF as background), cold blues, any color that reads as medical or corporate
+
+**Note:** All colors to be confirmed against WCAG AA contrast ratios before locking. Primary (#5E8C85) on Background (#F7F4F0) must be checked for text use.
 
 ---
 
