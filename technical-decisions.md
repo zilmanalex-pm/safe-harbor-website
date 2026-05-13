@@ -202,10 +202,12 @@ _Record every significant decision here with the date and reason._
 | 2026-05-13 | All pages live under `/app/[locale]/` from day one | next-intl requires locale-prefixed routes; retrofitting this mid-build is painful |
 | 2026-05-13 | Added `/lib` and `/types` folders to project structure | i18n config and shared TS types need a defined home before implementation starts |
 | 2026-05-13 | Components receive content as props — no internal `useTranslations()` calls | Keeps section components locale-agnostic and independently testable |
-| 2026-05-13 | Fonts loaded per locale via `localFont` in `[locale]/layout.tsx` | Prevents shipping both font stacks on every page; critical for mobile performance |
+| 2026-05-13 | Fonts loaded per locale via `next/font/google` in `[locale]/layout.tsx` | `next/font/google` self-hosts at build time — no runtime Google DNS calls; both font CSS variables are loaded but only the active locale's class is applied to `<body>` |
 | 2026-05-13 | All images via `next/image`; hero requires `priority={true}` | Protects LCP target; prevents layout shift from missing dimensions |
 | 2026-05-13 | `rtl:` Tailwind prefix used selectively, not reflexively | Prevents duplicate utility bloat; RTL overrides only where layout actually mirrors |
+| 2026-05-13 | Sprint 1 scaffold complete — Next.js 14, all config files, `[locale]` routing, lib/types/middleware wired | Project is ready for `npm install`; templates folder retained as reference |
+| 2026-05-13 | Next.js config uses `next.config.mjs`, not `next.config.ts` | Next.js 14 does not support `.ts` config files — that's a Next.js 15+ feature |
 
 ---
 
-_Last updated: 2026-05-13_
+_Last updated: 2026-05-13 — Sprint 1 scaffold complete_

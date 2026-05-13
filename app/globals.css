@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────
+   Base styles — Safe Harbor
+   Keep this file minimal. Design tokens live in tailwind.config.ts.
+   ───────────────────────────────────────────── */
+
+@layer base {
+  html {
+    /* Smooth scrolling for anchor links */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-text;
+    /* Font antialiasing for both Hebrew and Russian scripts */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus ring — visible for keyboard navigation, hidden on mouse click */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Remove focus ring on mouse interaction (browser handles this natively in modern browsers) */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
