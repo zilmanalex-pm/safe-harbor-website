@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "",
+    "description": ""
+  },
+  "hero": {
+    "headline": "",
+    "subheadline": "",
+    "ctaLabel": ""
+  },
+  "intro": {
+    "body": ""
+  },
+  "services": [
+    { "name": "", "description": "" },
+    { "name": "", "description": "" },
+    { "name": "", "description": "" },
+    { "name": "", "description": "" }
+  ],
+  "cta": {
+    "body": "",
+    "buttonLabel": ""
+  }
+}

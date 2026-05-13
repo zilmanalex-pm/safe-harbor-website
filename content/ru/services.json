@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "",
+    "description": ""
+  },
+  "headline": "",
+  "subheadline": "",
+  "services": [
+    {
+      "slug": "anxiety",
+      "name": "",
+      "description": ""
+    },
+    {
+      "slug": "relationships",
+      "name": "",
+      "description": ""
+    },
+    {
+      "slug": "life-transitions",
+      "name": "",
+      "description": ""
+    },
+    {
+      "slug": "identity",
+      "name": "",
+      "description": ""
+    }
+  ]
+}

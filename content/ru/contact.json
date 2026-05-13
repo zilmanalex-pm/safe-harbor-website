@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "title": "",
+    "description": ""
+  },
+  "intro": {
+    "body": ""
+  },
+  "responseTime": "",
+  "form": {
+    "nameLabel": "",
+    "emailLabel": "",
+    "phoneLabel": "",
+    "messageLabel": "",
+    "submitLabel": ""
+  },
+  "alternativeContact": null
+}
