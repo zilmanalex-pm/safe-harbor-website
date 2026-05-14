@@ -1,24 +1,37 @@
 {
   "meta": {
-    "title": "",
-    "description": ""
+    "title": "Соня Зильман | Психотерапия",
+    "description": "Психотерапия в тёплой и профессиональной обстановке. Безопасное пространство для настоящих перемен."
   },
   "hero": {
-    "headline": "",
-    "subheadline": "",
-    "ctaLabel": ""
+    "headline": "Пространство для настоящих перемен",
+    "subheadline": "Психотерапия в тёплом и личном подходе — для тех, кто готов чувствовать себя лучше",
+    "ctaLabel": "Давайте поговорим",
+    "photoAlt": "Соня Зильман, психотерапевт"
   },
   "intro": {
-    "body": ""
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   "services": [
-    { "name": "", "description": "" },
-    { "name": "", "description": "" },
-    { "name": "", "description": "" },
-    { "name": "", "description": "" }
+    {
+      "name": "Индивидуальная терапия",
+      "description": "Личное и конфиденциальное пространство для работы с эмоциями, паттернами и тем, что трудно нести в одиночку."
+    },
+    {
+      "name": "Терапия тревоги",
+      "description": "Практические инструменты и глубокая работа с беспокойством, страхами и навязчивыми мыслями."
+    },
+    {
+      "name": "Терапия депрессии",
+      "description": "Тёплая и профессиональная поддержка в периоды тяжести, пустоты и потери интереса к жизни."
+    },
+    {
+      "name": "Парная терапия",
+      "description": "Совместная работа для улучшения коммуникации, доверия и близости — иногда нужно нейтральное пространство."
+    }
   ],
   "cta": {
-    "body": "",
-    "buttonLabel": ""
+    "body": "Готовы сделать первый шаг? Я здесь.",
+    "buttonLabel": "Связаться"
   }
 }

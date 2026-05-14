@@ -207,7 +207,11 @@ _Record every significant decision here with the date and reason._
 | 2026-05-13 | `rtl:` Tailwind prefix used selectively, not reflexively | Prevents duplicate utility bloat; RTL overrides only where layout actually mirrors |
 | 2026-05-13 | Sprint 1 scaffold complete — Next.js 14, all config files, `[locale]` routing, lib/types/middleware wired | Project is ready for `npm install`; templates folder retained as reference |
 | 2026-05-13 | Next.js config uses `next.config.mjs`, not `next.config.ts` | Next.js 14 does not support `.ts` config files — that's a Next.js 15+ feature |
+| 2026-05-14 | Sprint 2 design system complete — font scale, border radius tokens, Button/Card/Input/Textarea components built | All Sprint 2 checklist items passed; mobile verified at 375px (warm background confirmed, no overflow) |
+| 2026-05-14 | Section components defined in `/components/sections/` — HeroSection, IntroSection, ServicesPreview, ContactCTA | Sprint 3 homepage sections. Content passed as props from page.tsx (consistent with component content strategy). |
+| 2026-05-14 | Hero photo uses a styled placeholder div until Sonya's image is ready | Image file not yet available; placeholder maintains layout and aspect ratio (4/5). Replace with `next/image` + `priority={true}` when photo is added. |
+| 2026-05-14 | Sprint 3 homepage complete — all sections render, mobile verified at 375px | HeroSection, IntroSection, ServicesPreview, ContactCTA wired into app/[locale]/page.tsx |
 
 ---
 
-_Last updated: 2026-05-13 — Sprint 1 scaffold complete_
+_Last updated: 2026-05-14 — Sprint 3 homepage complete_
