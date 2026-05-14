@@ -1,8 +1,8 @@
 // app/[locale]/about/page.tsx — About page
-// Sprint 4: replace placeholder with BioSection
 
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { AboutSection } from '@/components/sections/AboutSection'
 
 export async function generateMetadata({
   params: { locale },
@@ -16,13 +16,22 @@ export async function generateMetadata({
   }
 }
 
-export default function AboutPage() {
+export default async function AboutPage({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
+  const t = await getTranslations({ locale, namespace: 'about' })
+
   return (
-    <main>
-      {/* Sprint 4: drop BioSection here */}
-      <section className="flex min-h-screen items-center justify-center bg-background px-md">
-        <p className="text-text/50">About page — coming Sprint 4</p>
-      </section>
-    </main>
+    <AboutSection
+      opening={t('opening.body')}
+      approachHeadline={t('approach.headline')}
+      approach={t('approach.body')}
+      backgroundHeadline={t('background.headline')}
+      background={t('background.body')}
+      closing={t('closing.body')}
+      photoAlt={t('photoAlt')}
+    />
   )
 }

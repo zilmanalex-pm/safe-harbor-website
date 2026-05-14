@@ -1,8 +1,8 @@
 // app/[locale]/services/page.tsx — Services page
-// Sprint 4: replace placeholder with ServicesSection
 
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { ServicesSection } from '@/components/sections/ServicesSection'
 
 export async function generateMetadata({
   params: { locale },
@@ -16,13 +16,24 @@ export async function generateMetadata({
   }
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
+  const t = await getTranslations({ locale, namespace: 'services' })
+
+  const services = [0, 1, 2, 3].map((i) => ({
+    slug: t(`services.${i}.slug`),
+    name: t(`services.${i}.name`),
+    description: t(`services.${i}.description`),
+  }))
+
   return (
-    <main>
-      {/* Sprint 4: drop ServicesSection here */}
-      <section className="flex min-h-screen items-center justify-center bg-background px-md">
-        <p className="text-text/50">Services page — coming Sprint 4</p>
-      </section>
-    </main>
+    <ServicesSection
+      headline={t('headline')}
+      subheadline={t('subheadline')}
+      services={services}
+    />
   )
 }

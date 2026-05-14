@@ -1,18 +1,18 @@
 {
   "meta": {
-    "title": "",
-    "description": ""
+    "title": "Контакт | Соня Зильман",
+    "description": "Оставьте сообщение и я отвечу в ближайшее время."
   },
   "intro": {
-    "body": ""
+    "body": "Можно написать сообщение — я отвечу в течение одного-двух дней. Не нужно объяснять всё сразу — достаточно сказать, что хочется поговорить."
   },
-  "responseTime": "",
+  "responseTime": "Время ответа: до двух дней",
   "form": {
-    "nameLabel": "",
-    "emailLabel": "",
-    "phoneLabel": "",
-    "messageLabel": "",
-    "submitLabel": ""
+    "nameLabel": "Имя",
+    "emailLabel": "Email",
+    "phoneLabel": "Телефон (необязательно)",
+    "messageLabel": "Сообщение",
+    "submitLabel": "Отправить"
   },
   "alternativeContact": null
 }

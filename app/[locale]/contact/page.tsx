@@ -1,8 +1,8 @@
 // app/[locale]/contact/page.tsx — Contact page
-// Sprint 4: replace placeholder with ContactSection (form + direct contact info)
 
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { ContactSection } from '@/components/sections/ContactSection'
 
 export async function generateMetadata({
   params: { locale },
@@ -16,13 +16,22 @@ export async function generateMetadata({
   }
 }
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
+  const t = await getTranslations({ locale, namespace: 'contact' })
+
   return (
-    <main>
-      {/* Sprint 4: drop ContactSection here */}
-      <section className="flex min-h-screen items-center justify-center bg-background px-md">
-        <p className="text-text/50">Contact page — coming Sprint 4</p>
-      </section>
-    </main>
+    <ContactSection
+      intro={t('intro.body')}
+      responseTime={t('responseTime')}
+      nameLabel={t('form.nameLabel')}
+      emailLabel={t('form.emailLabel')}
+      phoneLabel={t('form.phoneLabel')}
+      messageLabel={t('form.messageLabel')}
+      submitLabel={t('form.submitLabel')}
+    />
   )
 }

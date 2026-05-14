@@ -33,7 +33,7 @@ export default async function HomePage({
   }))
 
   return (
-    <main>
+    <>
       <HeroSection
         headline={t('hero.headline')}
         subheadline={t('hero.subheadline')}
@@ -51,6 +51,6 @@ export default async function HomePage({
         buttonLabel={t('cta.buttonLabel')}
         buttonHref={`/${locale}/contact`}
       />
-    </main>
+    </>
   )
 }

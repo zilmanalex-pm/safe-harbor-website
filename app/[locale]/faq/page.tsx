@@ -1,8 +1,8 @@
 // app/[locale]/faq/page.tsx — FAQ page
-// Sprint 4: replace placeholder with FAQSection (accordion)
 
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { FAQSection } from '@/components/sections/FAQSection'
 
 export async function generateMetadata({
   params: { locale },
@@ -16,13 +16,22 @@ export async function generateMetadata({
   }
 }
 
-export default function FAQPage() {
+export default async function FAQPage({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
+  const t = await getTranslations({ locale, namespace: 'faq' })
+
+  const questions = [0, 1, 2, 3, 4, 5, 6].map((i) => ({
+    question: t(`questions.${i}.question`),
+    answer: t(`questions.${i}.answer`),
+  }))
+
   return (
-    <main>
-      {/* Sprint 4: drop FAQSection here */}
-      <section className="flex min-h-screen items-center justify-center bg-background px-md">
-        <p className="text-text/50">FAQ page — coming Sprint 4</p>
-      </section>
-    </main>
+    <FAQSection
+      headline={t('headline')}
+      questions={questions}
+    />
   )
 }

@@ -211,7 +211,10 @@ _Record every significant decision here with the date and reason._
 | 2026-05-14 | Section components defined in `/components/sections/` — HeroSection, IntroSection, ServicesPreview, ContactCTA | Sprint 3 homepage sections. Content passed as props from page.tsx (consistent with component content strategy). |
 | 2026-05-14 | Hero photo uses a styled placeholder div until Sonya's image is ready | Image file not yet available; placeholder maintains layout and aspect ratio (4/5). Replace with `next/image` + `priority={true}` when photo is added. |
 | 2026-05-14 | Sprint 3 homepage complete — all sections render, mobile verified at 375px | HeroSection, IntroSection, ServicesPreview, ContactCTA wired into app/[locale]/page.tsx |
+| 2026-05-14 | Contact form handler: Formspree | Simplest option — no backend code, just a form ID in env. Set NEXT_PUBLIC_FORMSPREE_ID in .env.local and Vercel. Wire endpoint in Sprint 6. |
+| 2026-05-14 | Header and Footer moved into app/[locale]/layout.tsx | All pages share the same nav and footer. Nav links and labels loaded from shared.json per locale. |
+| 2026-05-14 | Sprint 4 secondary pages complete — mobile verified at 375px | About, Services, FAQ, Contact pages built and wired. AboutSection, ServicesSection, FAQSection, ContactSection components created. |
 
 ---
 
-_Last updated: 2026-05-14 — Sprint 3 homepage complete_
+_Last updated: 2026-05-14 — Sprint 4 secondary pages complete_

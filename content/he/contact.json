@@ -1,18 +1,18 @@
 {
   "meta": {
-    "title": "",
-    "description": ""
+    "title": "צרו קשר | סוניה זילמן",
+    "description": "השאירו פרטים ואחזור אליכם בהקדם."
   },
   "intro": {
-    "body": ""
+    "body": "אפשר לשלוח הודעה ואני אחזור אליכם בתוך יום-יומיים. אין צורך להסביר הכל — מספיק להגיד שאתם רוצים לדבר."
   },
-  "responseTime": "",
+  "responseTime": "זמן תגובה: עד יומיים",
   "form": {
-    "nameLabel": "",
-    "emailLabel": "",
-    "phoneLabel": "",
-    "messageLabel": "",
-    "submitLabel": ""
+    "nameLabel": "שם",
+    "emailLabel": "אימייל",
+    "phoneLabel": "טלפון (אופציונלי)",
+    "messageLabel": "הודעה",
+    "submitLabel": "שליחה"
   },
   "alternativeContact": null
 }
