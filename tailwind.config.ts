@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss'
 // ─────────────────────────────────────────────
 // Tailwind Config — Safe Harbor
 // Values sourced from design-rules.md
-// Status: DRAFT (colours and fonts confirmed; font scale and component styles TBD — Sprint 2)
+// Status: DRAFT — Sprint 2 complete (font scale + component styles locked)
 // ─────────────────────────────────────────────
 
 const config: Config = {
@@ -52,6 +52,22 @@ const config: Config = {
   		},
   		maxWidth: {
   			content: '1200px'
+  		},
+
+  		// ── Font scale (DRAFT — Option A: Warm Editorial) ──────
+  		fontSize: {
+  			'h1':    ['52px', { lineHeight: '1.15', fontWeight: '600' }],
+  			'h2':    ['34px', { lineHeight: '1.2',  fontWeight: '500' }],
+  			'h3':    ['22px', { lineHeight: '1.3',  fontWeight: '500' }],
+  			'body':  ['17px', { lineHeight: '1.7',  fontWeight: '400' }],
+  			'small': ['13px', { lineHeight: '1.5',  fontWeight: '400' }],
+  		},
+
+  		// ── Border radius (DRAFT — Option A: Soft & rounded) ───
+  		borderRadius: {
+  			'pill': '9999px',  // primary + secondary buttons, inputs
+  			'card': '16px',    // cards and section containers
+  			'sm':   '8px',     // small UI elements (badges, tags)
   		},
   		keyframes: {
   			'accordion-down': {
