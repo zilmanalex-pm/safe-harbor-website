@@ -9,6 +9,13 @@ const nextConfig = {
   images: {
     formats: ['image/webp'],
   },
+  // Skip type-checking and lint during Vercel builds — we run these locally
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 }
 
 export default withNextIntl(nextConfig)
