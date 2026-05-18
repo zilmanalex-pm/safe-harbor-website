@@ -1,4 +1,5 @@
 // components/sections/AboutSection.tsx — Safe Harbor
+import Image from 'next/image'
 // Bio page layout: photo left + text right on desktop (mirrors in RTL).
 // Mobile: photo on top, text below.
 // This is typically the most-visited page — invest in the copy.
@@ -31,19 +32,14 @@ export function AboutSection({
 
           {/* Photo — top on mobile, left on desktop LTR / right on desktop RTL */}
           <div className="w-full md:w-[380px] shrink-0 order-1 md:order-1">
-            <div
-              className="w-full aspect-[3/4] rounded-card overflow-hidden bg-neutral flex items-center justify-center"
-              role="img"
-              aria-label={photoAlt}
-            >
-              {/*
-                Replace with Next.js <Image> when photo is ready:
-                import Image from 'next/image'
-                <Image src="/images/sonya-about.jpg" alt={photoAlt} fill className="object-cover object-top" priority />
-              */}
-              <span className="text-text/30 text-small select-none">
-                [תמונה / Фото]
-              </span>
+            <div className="relative w-full aspect-[3/4] rounded-card overflow-hidden bg-neutral">
+              <Image
+                src="/images/sofia-hero.jpg"
+                alt={photoAlt}
+                fill
+                className="object-cover object-top"
+                priority
+              />
             </div>
           </div>
 

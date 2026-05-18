@@ -4,6 +4,7 @@
 // Desktop LTR: text left, photo right.
 // Desktop RTL: text right, photo left (flex-row reverses naturally with dir="rtl").
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
@@ -44,26 +45,14 @@ export function HeroSection({
 
           {/* Photo column — appears on top on mobile (order-1), right on desktop LTR */}
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
-            <div
-              className="relative w-full max-w-[440px] aspect-[4/5] rounded-card overflow-hidden bg-neutral flex items-center justify-center"
-              role="img"
-              aria-label={photoAlt}
-            >
-              {/*
-                Replace this placeholder with Next.js <Image> once Sonya's photo is ready:
-
-                import Image from 'next/image'
-                <Image
-                  src="/images/sonya-hero.jpg"
-                  alt={photoAlt}
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-              */}
-              <span className="text-text/30 text-small select-none">
-                [תמונה / Фото]
-              </span>
+            <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
+              <Image
+                src="/images/sofia-hero.jpg"
+                alt={photoAlt}
+                fill
+                className="object-cover object-top"
+                priority
+              />
             </div>
           </div>
 

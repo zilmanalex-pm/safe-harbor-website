@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 
 // Sprint 6: set NEXT_PUBLIC_FORMSPREE_ID in .env.local and on Vercel
+// Formspree destination email: sonyatar7@gmail.com — configure in Formspree dashboard
 const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ID
   ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`
   : '#'

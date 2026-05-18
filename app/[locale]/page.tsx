@@ -1,11 +1,12 @@
 // app/[locale]/page.tsx — Homepage
-// Sprint 3: HeroSection, IntroSection, ServicesPreview, ContactCTA
+// Sprint 3: HeroSection, IntroSection, ServicesPreview, TrustBar, ContactCTA
 
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { IntroSection } from '@/components/sections/IntroSection'
 import { ServicesPreview } from '@/components/sections/ServicesPreview'
+import { TrustBar } from '@/components/sections/TrustBar'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 
 export async function generateMetadata({
@@ -32,6 +33,11 @@ export default async function HomePage({
     description: t(`services.${i}.description`),
   }))
 
+  const trustItems = [0, 1, 2].map((i) => ({
+    value: t(`trust.items.${i}.value`),
+    label: t(`trust.items.${i}.label`),
+  }))
+
   return (
     <>
       <HeroSection
@@ -45,6 +51,8 @@ export default async function HomePage({
       <IntroSection body={t('intro.body')} />
 
       <ServicesPreview services={services} />
+
+      <TrustBar items={trustItems} />
 
       <ContactCTA
         body={t('cta.body')}

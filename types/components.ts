@@ -104,6 +104,7 @@ export interface ContactSectionProps {
 // Navigation
 // ─────────────────────────────────────────────
 export interface NavProps {
+  siteName: string
   links: Array<{
     label: string
     href: string

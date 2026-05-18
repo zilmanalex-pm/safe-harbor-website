@@ -14,6 +14,7 @@ import type { Locale } from '@/lib/utils'
 
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 
 import '@/app/globals.css'
 
@@ -34,12 +35,12 @@ export function generateStaticParams() {
 // ─────────────────────────────────────────────
 export const metadata: Metadata = {
   title: {
-    template: '%s | Sonya Zilman',
-    default: 'Sonya Zilman — Psychotherapist',
+    template: '%s | Sofia Tarasov',
+    default: 'Sofia Tarasov — Psychotherapist',
   },
   openGraph: {
     type: 'website',
-    siteName: 'Sonya Zilman Psychotherapy',
+    siteName: 'Sofia Tarasov Psychotherapy',
   },
   robots: {
     index: true,
@@ -65,6 +66,7 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages()
+  const tShared = await getTranslations({ locale, namespace: 'shared' })
   const t = await getTranslations({ locale, namespace: 'shared.nav' })
 
   const dir = getDir(locale as Locale)
@@ -95,6 +97,7 @@ export default async function LocaleLayout({
       <body className={fontClass}>
         <NextIntlClientProvider messages={messages}>
           <Header
+            siteName={tShared('siteName')}
             links={navLinks}
             ctaLabel={t('cta')}
             ctaHref={`/${locale}/contact`}
@@ -107,6 +110,10 @@ export default async function LocaleLayout({
             tagline={tFooter('tagline')}
             copyright={tFooter('copyright')}
             links={footerLinks}
+          />
+          <WhatsAppButton
+            number={tShared('whatsapp')}
+            ariaLabel="צרו קשר בוואטסאפ / Написать в WhatsApp"
           />
         </NextIntlClientProvider>
       </body>
