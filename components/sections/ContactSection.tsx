@@ -25,6 +25,8 @@ interface ContactSectionProps {
   phoneLabel: string
   messageLabel: string
   submitLabel: string
+  successMessage: string
+  errorMessage: string
 }
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
@@ -37,6 +39,8 @@ export function ContactSection({
   phoneLabel,
   messageLabel,
   submitLabel,
+  successMessage,
+  errorMessage,
 }: ContactSectionProps) {
   const [status, setStatus] = useState<FormStatus>('idle')
 
@@ -85,8 +89,7 @@ export function ContactSection({
           <div className="bg-primary/10 rounded-card p-lg text-center">
             <p className="text-body font-medium text-text">✓</p>
             <p className="text-body text-text/80 mt-xs">
-              {/* Sprint 4: add success message to content JSON */}
-              הודעתכם נשלחה. אחזור אליכם בהקדם.
+              {successMessage}
             </p>
           </div>
         ) : (
@@ -127,8 +130,7 @@ export function ContactSection({
 
             {status === 'error' && (
               <p className="text-small text-red-500" role="alert">
-                {/* Sprint 4: add error message to content JSON */}
-                משהו השתבש. נסו שוב או שלחו אימייל ישיר.
+                {errorMessage}
               </p>
             )}
 

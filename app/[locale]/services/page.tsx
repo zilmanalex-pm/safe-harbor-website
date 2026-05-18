@@ -1,6 +1,8 @@
 // app/[locale]/services/page.tsx — Services page
 
 import type { Metadata } from 'next'
+import type { Locale } from '@/lib/utils'
+import { generatePageMetadata } from '@/components/SEO'
 import { getTranslations } from 'next-intl/server'
 import { ServicesSection } from '@/components/sections/ServicesSection'
 
@@ -9,11 +11,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'services.meta' })
-  return {
-    title: t('title'),
-    description: t('description'),
-  }
+  return generatePageMetadata(locale as Locale, 'services')
 }
 
 export default async function ServicesPage({

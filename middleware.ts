@@ -1,26 +1,57 @@
 // middleware.ts — Safe Harbor
-// Handles locale routing for next-intl.
-// Lives in project root alongside /app.
-//
-// Redirects bare paths to the appropriate locale:
-//   /        → /he       (Hebrew is default)
-//   /about   → /he/about
-//   /ru      → /ru       (Russian)
+// Handles two concerns:
+//   1. Admin route protection (password cookie check)
+//   2. Locale routing via next-intl for all public pages
 
-import createMiddleware from 'next-intl/middleware'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import createIntlMiddleware from 'next-intl/middleware'
 
-export default createMiddleware({
+// ─────────────────────────────────────────────
+// next-intl locale middleware
+// ─────────────────────────────────────────────
+const intlMiddleware = createIntlMiddleware({
   locales: ['he', 'ru'],
-
-  // Default locale — visitors with no locale preference are served Hebrew
   defaultLocale: 'he',
-
-  // Always show locale prefix in URL: /he/about, /ru/about — never bare /about
   localePrefix: 'always',
 })
 
+// ─────────────────────────────────────────────
+// Combined middleware
+// ─────────────────────────────────────────────
+export default function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl
+
+  // ── Admin route protection ──────────────────
+  if (pathname.startsWith('/admin')) {
+    // Always allow access to the login page itself
+    if (pathname === '/admin/login') {
+      return NextResponse.next()
+    }
+
+    const cookieValue = req.cookies.get('admin_auth')?.value
+    const expectedPassword = process.env.ADMIN_PASSWORD
+
+    const isAuthorised =
+      expectedPassword !== undefined && cookieValue === expectedPassword
+
+    if (!isAuthorised) {
+      const loginUrl = new URL('/admin/login', req.url)
+      // Preserve the original destination so we can redirect back after login
+      loginUrl.searchParams.set('next', pathname)
+      return NextResponse.redirect(loginUrl)
+    }
+
+    return NextResponse.next()
+  }
+
+  // ── Locale routing for all other pages ─────
+  return intlMiddleware(req)
+}
+
 export const config = {
-  // Apply to all routes except Next.js internals, static files, and API routes
+  // Run on all paths except Next.js internals, static files, and API routes.
+  // /admin is included because we need to intercept it above.
   matcher: [
     '/((?!_next|_vercel|api|.*\\..*).*)',
   ],

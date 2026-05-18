@@ -1,6 +1,8 @@
 // app/[locale]/about/page.tsx — About page
 
 import type { Metadata } from 'next'
+import type { Locale } from '@/lib/utils'
+import { generatePageMetadata, PersonSchema } from '@/components/SEO'
 import { getTranslations } from 'next-intl/server'
 import { AboutSection } from '@/components/sections/AboutSection'
 
@@ -9,11 +11,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'about.meta' })
-  return {
-    title: t('title'),
-    description: t('description'),
-  }
+  return generatePageMetadata(locale as Locale, 'about')
 }
 
 export default async function AboutPage({
@@ -24,14 +22,17 @@ export default async function AboutPage({
   const t = await getTranslations({ locale, namespace: 'about' })
 
   return (
-    <AboutSection
-      opening={t('opening.body')}
-      approachHeadline={t('approach.headline')}
-      approach={t('approach.body')}
-      backgroundHeadline={t('background.headline')}
-      background={t('background.body')}
-      closing={t('closing.body')}
-      photoAlt={t('photoAlt')}
-    />
+    <>
+      <PersonSchema />
+      <AboutSection
+        opening={t('opening.body')}
+        approachHeadline={t('approach.headline')}
+        approach={t('approach.body')}
+        backgroundHeadline={t('background.headline')}
+        background={t('background.body')}
+        closing={t('closing.body')}
+        photoAlt={t('photoAlt')}
+      />
+    </>
   )
 }

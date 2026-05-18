@@ -5,6 +5,7 @@
 
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Script from 'next/script'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 
@@ -95,6 +96,15 @@ export default async function LocaleLayout({
       className={`${heebo.variable} ${inter.variable}`}
     >
       <body className={fontClass}>
+        {/* Plausible analytics — only fires in production when NEXT_PUBLIC_SITE_URL is set */}
+        {process.env.NEXT_PUBLIC_SITE_URL && (
+          <Script
+            defer
+            data-domain="sofia-tarasov.com"
+            src="https://plausible.io/js/script.js"
+            strategy="afterInteractive"
+          />
+        )}
         <NextIntlClientProvider messages={messages}>
           <Header
             siteName={tShared('siteName')}

@@ -1,8 +1,9 @@
 // app/[locale]/page.tsx — Homepage
-// Sprint 3: HeroSection, IntroSection, ServicesPreview, TrustBar, ContactCTA
 
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import type { Locale } from '@/lib/utils'
+import { generatePageMetadata, LocalBusinessSchema } from '@/components/SEO'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { IntroSection } from '@/components/sections/IntroSection'
 import { ServicesPreview } from '@/components/sections/ServicesPreview'
@@ -14,11 +15,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'home.meta' })
-  return {
-    title: t('title'),
-    description: t('description'),
-  }
+  return generatePageMetadata(locale as Locale, 'home')
 }
 
 export default async function HomePage({
@@ -40,6 +37,7 @@ export default async function HomePage({
 
   return (
     <>
+      <LocalBusinessSchema />
       <HeroSection
         headline={t('hero.headline')}
         subheadline={t('hero.subheadline')}
@@ -47,13 +45,9 @@ export default async function HomePage({
         ctaHref={`/${locale}/contact`}
         photoAlt={t('hero.photoAlt')}
       />
-
       <IntroSection body={t('intro.body')} />
-
       <ServicesPreview services={services} />
-
       <TrustBar items={trustItems} />
-
       <ContactCTA
         body={t('cta.body')}
         buttonLabel={t('cta.buttonLabel')}

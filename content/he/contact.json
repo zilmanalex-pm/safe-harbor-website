@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "צרו קשר | סוניה זילמן",
+    "title": "צרו קשר | סופיה טרסוב",
     "description": "השאירו פרטים ואחזור אליכם בהקדם."
   },
   "intro": {
@@ -12,7 +12,9 @@
     "emailLabel": "אימייל",
     "phoneLabel": "טלפון (אופציונלי)",
     "messageLabel": "הודעה",
-    "submitLabel": "שליחה"
+    "submitLabel": "שליחה",
+    "successMessage": "הודעתכם נשלחה. אחזור אליכם בהקדם.",
+    "errorMessage": "משהו השתבש. נסו שוב או שלחו אימייל ישיר."
   },
   "alternativeContact": null
 }
