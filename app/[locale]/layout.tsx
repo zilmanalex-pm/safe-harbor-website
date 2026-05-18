@@ -111,7 +111,7 @@ export default async function LocaleLayout({
             links={navLinks}
             ctaLabel={t('cta')}
             ctaHref={`/${locale}/contact`}
-            locale={locale}
+            locale={locale as Locale}
           />
           <main>
             {children}
