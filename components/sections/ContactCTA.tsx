@@ -3,7 +3,8 @@
 // No pressure language — warm and inviting, not urgent.
 
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface ContactCTAProps {
   body: string
@@ -18,9 +19,9 @@ export function ContactCTA({ body, buttonLabel, buttonHref }: ContactCTAProps) {
         <p className="text-h3 font-medium text-text leading-snug">
           {body}
         </p>
-        <Button asChild size="lg">
-          <Link href={buttonHref}>{buttonLabel}</Link>
-        </Button>
+        <Link href={buttonHref} className={cn(buttonVariants({ size: 'lg' }))}>
+          {buttonLabel}
+        </Link>
       </div>
     </section>
   )
