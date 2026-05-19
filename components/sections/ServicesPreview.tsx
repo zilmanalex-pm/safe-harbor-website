@@ -19,7 +19,8 @@ export function ServicesPreview({ services }: ServicesPreviewProps) {
     <section className="bg-neutral/40 py-2xl">
       <div className="w-full max-w-[1200px] mx-auto px-lg">
 
-        {/* Section title — Sprint 4 will add a proper heading from content JSON */}
+        {/* Visually hidden h2 — maintains semantic heading order (h1 hero → h2 here → h3 cards) */}
+        <h2 className="sr-only">Services</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
           {services.map((service, i) => (
             <Card key={i} className="hover:border-primary/40 transition-colors duration-200">

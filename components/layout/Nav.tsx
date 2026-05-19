@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import type { NavProps } from '@/types/components'
 import { LocaleSwitcher } from './LocaleSwitcher'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 
 export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
   return (
@@ -48,9 +48,9 @@ export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
       {/* Right side: language switcher + CTA — grouped together */}
       <div className="hidden md:flex items-center gap-sm">
         <LocaleSwitcher currentLocale={locale} />
-        <Button asChild size="sm">
-          <Link href={ctaHref}>{ctaLabel}</Link>
-        </Button>
+        <Link href={ctaHref} className={cn(buttonVariants({ size: 'sm' }))}>
+          {ctaLabel}
+        </Link>
       </div>
 
       {/* Mobile menu trigger */}

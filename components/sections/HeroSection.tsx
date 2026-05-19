@@ -6,7 +6,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface HeroSectionProps {
   headline: string
@@ -37,9 +38,9 @@ export function HeroSection({
               {subheadline}
             </p>
             <div className="mt-sm">
-              <Button asChild size="lg">
-                <Link href={ctaHref}>{ctaLabel}</Link>
-              </Button>
+              <Link href={ctaHref} className={cn(buttonVariants({ size: 'lg' }))}>
+                {ctaLabel}
+              </Link>
             </div>
           </div>
 
