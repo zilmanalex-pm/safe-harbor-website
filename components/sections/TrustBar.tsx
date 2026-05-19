@@ -40,7 +40,7 @@ export function TrustBar({ items }: TrustBarProps) {
               <span className="text-h2 font-semibold text-primary leading-none">
                 {item.value}
               </span>
-              <span className="text-small text-text/60 tracking-wide uppercase">
+              <span className="text-small text-text/80 tracking-wide uppercase">
                 {item.label}
               </span>
             </li>

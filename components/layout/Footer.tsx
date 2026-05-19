@@ -28,7 +28,7 @@ export function Footer({ tagline, copyright, links }: FooterProps) {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-text/60 hover:text-primary text-sm transition-colors"
+                  className="text-text/80 hover:text-primary text-sm transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -39,7 +39,7 @@ export function Footer({ tagline, copyright, links }: FooterProps) {
 
         {/* Divider */}
         <div className="mt-lg border-t border-text/10 pt-lg">
-          <p className="text-text/40 text-xs">
+          <p className="text-text/70 text-xs">
             {copyright}
           </p>
         </div>
