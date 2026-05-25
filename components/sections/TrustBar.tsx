@@ -37,11 +37,11 @@ export function TrustBar({ items }: TrustBarProps) {
                 i > 0 && 'md:border-s md:border-primary/20',
               )}
             >
+              <span className="text-small text-text/60 tracking-wide uppercase">
+                {item.label}
+              </span>
               <span className="text-h2 font-semibold text-primary leading-none">
                 {item.value}
-              </span>
-              <span className="text-small text-text/80 tracking-wide uppercase">
-                {item.label}
               </span>
             </li>
           ))}

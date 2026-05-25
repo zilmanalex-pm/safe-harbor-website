@@ -11,6 +11,7 @@ const config: Config = {
     content: [
     './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
+    './lib/**/*.{ts,tsx}',
   ],
 
   future: {
@@ -93,6 +94,11 @@ const config: Config = {
   		}
   	}
   },
+
+  safelist: [
+    'text-white',
+    '!text-white', // forced with !important — primary button text
+  ],
 
   plugins: [],
 }

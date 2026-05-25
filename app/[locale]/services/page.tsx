@@ -23,6 +23,7 @@ export default async function ServicesPage({
 
   const services = [0, 1, 2, 3].map((i) => ({
     slug: t(`services.${i}.slug`),
+    image: t(`services.${i}.image`),
     name: t(`services.${i}.name`),
     description: t(`services.${i}.description`),
   }))

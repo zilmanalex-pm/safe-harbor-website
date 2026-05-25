@@ -1,41 +1,35 @@
 // components/sections/ServicesPreview.tsx — Safe Harbor
-// 2x2 card grid on desktop, single column on mobile.
-// Uses Card component from Sprint 2.
-// Section background uses warm neutral to create visual separation from hero.
+// Audience strip: who Sofia works with — children, teenagers, adults.
+// Three items in a horizontal row, no white cards, on the neutral background.
 
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-
-interface Service {
-  name: string
-  description: string
+interface AudienceItem {
+  label: string
+  range: string
 }
 
 interface ServicesPreviewProps {
-  services: Service[]
+  audience: AudienceItem[]
 }
 
-export function ServicesPreview({ services }: ServicesPreviewProps) {
+export function ServicesPreview({ audience }: ServicesPreviewProps) {
   return (
-    <section className="bg-neutral/40 py-2xl">
+    <section className="bg-neutral/60 py-2xl">
       <div className="w-full max-w-[1200px] mx-auto px-lg">
-
-        {/* Visually hidden h2 — maintains semantic heading order (h1 hero → h2 here → h3 cards) */}
-        <h2 className="sr-only">Services</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-          {services.map((service, i) => (
-            <Card key={i} className="hover:border-primary/40 transition-colors duration-200">
-              <CardHeader>
-                <CardTitle>{service.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-body text-text/70 leading-relaxed">
-                  {service.description}
-                </p>
-              </CardContent>
-            </Card>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-xl sm:gap-0">
+          {audience.map((item, i) => (
+            <div
+              key={i}
+              className="flex-1 flex flex-col items-center text-center gap-xs px-xl"
+            >
+              <span className="text-[19px] font-semibold text-text">
+                {item.label}
+              </span>
+              <span className="text-[15px] text-text/55 leading-snug">
+                {item.range}
+              </span>
+            </div>
           ))}
         </div>
-
       </div>
     </section>
   )

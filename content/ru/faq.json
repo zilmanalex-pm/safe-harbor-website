@@ -1,37 +1,47 @@
 {
   "meta": {
-    "title": "Вопросы | Соня Зильман",
+    "title": "Часто задаваемые вопросы | Соня Зильман",
     "description": "Ответы на вопросы, которые возникают перед началом терапии."
   },
   "headline": "Вопросы, которые задают до первого звонка",
-  "questions": [
+  "categories": [
     {
-      "question": "Что происходит на первой встрече?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+      "title": "Личный уровень",
+      "questions": [
+        {
+          "question": "Что происходит на первой встрече?",
+          "answer": "Первая встреча — это прежде всего безопасное пространство для взаимного знакомства. Мы обсудим причины, которые привели вас в терапию, ваши потребности и ожидания, а также поймем, как мы можем работать вместе. Это возможность для вас почувствовать динамику и понять, насколько вам комфортно в этом пространстве."
+        },
+        {
+          "question": "Останется ли конфиденциальным то, что я говорю?",
+          "answer": "Да, абсолютно. Профессиональная этика и конфиденциальность — это незыблемая основа моей работы. Все темы, переживания и личные данные, которыми вы делитесь в стенах кабинета, остаются строго между нами. Это необходимо для того, чтобы вы чувствовали себя защищенно, свободно и без какого-либо осуждения."
+        },
+        {
+          "question": "Что делать, если терапия мне не подойдет?",
+          "answer": "Это абсолютно естественно. Доверие и «химический контакт» между клиентом и терапевтом — главный фундамент успеха. Если в процессе работы вы почувствуете, что метод или динамика вам не подходят, я искренне рекомендую открыто обсудить это на сессии. Мы сможем скорректировать процесс, а при необходимости я буду рада порекомендовать вам коллег, которые подойдут лучше."
+        }
+      ]
     },
     {
-      "question": "Сколько длится терапия?",
-      "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
-    },
-    {
-      "question": "В чём разница между психологом и психотерапевтом?",
-      "answer": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse."
-    },
-    {
-      "question": "Работаете ли вы онлайн?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-    },
-    {
-      "question": "Сколько стоит сессия?",
-      "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
-    },
-    {
-      "question": "Что если терапия мне не подойдёт?",
-      "answer": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
-    },
-    {
-      "question": "Всё, что я скажу, останется конфиденциальным?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+      "title": "Организационные вопросы",
+      "questions": [
+        {
+          "question": "Проводятся ли сессии онлайн?",
+          "answer": "Да, конечно. Наряду со встречами в уютной клинике в Ришон-ле-Ционе, я провожу сессии онлайн (через Zoom или другие защищенные платформы). Удаленный формат обеспечивает максимальную гибкость, экономит время на дорогу и позволяет проходить терапию в привычной для вас обстановке."
+        },
+        {
+          "question": "Сколько стоит сессия?",
+          "answer": "Стоимость терапевтической сессии (продолжительностью 50 минут) в клинике или онлайн составляет [X] шекелей. Оплата производится в конце каждой встречи или раз в месяц по предварительной договоренности — так, как вам удобно."
+        },
+        {
+          "question": "Сколько длится терапия?",
+          "answer": "Продолжительность терапии индивидуальна и зависит от ваших целей, потребностей и личного темпа. Регулярные сессии проходят раз в неделю и длятся 50 минут. Иногда это краткосрочный, сфокусированный процесс, а иногда — глубокая длительная работа. Все строится исключительно по взаимному согласию и в вашем темпе."
+        },
+        {
+          "question": "В чем разница между психологом и психотерапевтом?",
+          "answer": "Психотерапия — это общее название для глубокой психологической и эмоциональной помощи. Дипломированный психотерапевт — это специалист (клинический соцработник, психолог или магистр смежных направлений), прошедший многолетнюю дополнительную клиническую подготовку в аккредитованных школах психотерапии. Цель обоих направлений одинакова: поддержать вас, помочь пережить кризис и справиться с душевной болью."
+        }
+      ]
     }
   ]
 }
