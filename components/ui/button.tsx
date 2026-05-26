@@ -25,7 +25,7 @@ const buttonVariants = cva(
         // Primary — filled sage CTA
         // #4d7870 is primary darkened enough to pass WCAG AA (4.86:1) with near-white text
         primary: [
-          'bg-[#4d7870] !text-white',
+          'bg-[#4d7870] text-surface',
           'hover:opacity-90',
           'active:scale-[0.98]',
         ],

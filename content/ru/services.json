@@ -8,25 +8,21 @@
   "services": [
     {
       "slug": "individual",
-      "image": "/images/bird3.jpg",
       "name": "Индивидуальная терапия",
       "description": "Личное и конфиденциальное пространство для работы с эмоциями, паттернами и тем, что трудно нести в одиночку. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       "slug": "anxiety",
-      "image": "/images/girl1.jpg",
       "name": "Терапия тревоги",
       "description": "Практические инструменты и глубокая работа с беспокойством, страхами и навязчивыми мыслями. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore."
     },
     {
       "slug": "depression",
-      "image": "/images/mountains-reflection.jpg",
       "name": "Терапия депрессии",
       "description": "Тёплая и профессиональная поддержка в периоды тяжести, пустоты и потери интереса к жизни. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore."
     },
     {
       "slug": "couples",
-      "image": "/images/couple-boat.jpg",
       "name": "Парная терапия",
       "description": "Совместная работа для улучшения коммуникации, доверия и близости — иногда нужно нейтральное пространство. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor."
     }

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="4" fill="#F7F4F0"/>
-  <!-- Three nested arcs centered at (16, 24), radii 4/8/12, evenly spaced -->
-  <path d="M 12 24 A 4 4 0 0 1 20 24"   stroke="#5E8C85" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-  <path d="M 8  24 A 8 8 0 0 1 24 24"   stroke="#5E8C85" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-  <path d="M 4  24 A 12 12 0 0 1 28 24" stroke="#5E8C85" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-  <!-- Baseline -->
-  <line x1="3" y1="24" x2="29" y2="24" stroke="#5E8C85" stroke-width="1.2" stroke-linecap="round"/>
-</svg>

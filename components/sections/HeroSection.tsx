@@ -25,24 +25,12 @@ export function HeroSection({
   photoAlt,
 }: HeroSectionProps) {
   return (
-    <section className="relative flex items-center bg-background py-2xl overflow-hidden">
-
-      {/* Background drawing — tree in fog, full hero width, decorative only */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
-        <Image
-          src="/images/tree2.jpg"
-          alt=""
-          fill
-          className="object-cover opacity-[0.15]"
-          priority={false}
-        />
-      </div>
-
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-lg">
-        <div className="flex flex-col md:flex-row gap-2xl items-stretch">
+    <section className="min-h-[90vh] flex items-center bg-background py-3xl">
+      <div className="w-full max-w-[1200px] mx-auto px-lg">
+        <div className="flex flex-col md:flex-row gap-2xl items-center">
 
           {/* Text column — appears below photo on mobile (order-2), left on desktop LTR */}
-          <div className="flex-1 flex flex-col gap-md order-2 md:order-1 text-start justify-center">
+          <div className="flex-1 flex flex-col gap-md order-2 md:order-1 text-start">
             <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15]">
               {headline}
             </h1>
@@ -50,7 +38,7 @@ export function HeroSection({
               {subheadline}
             </p>
             <div className="mt-sm">
-              <Link href={ctaHref} className={cn(buttonVariants({ size: 'default' }), 'self-start')}>
+              <Link href={ctaHref} className={cn(buttonVariants({ size: 'lg' }))}>
                 {ctaLabel}
               </Link>
             </div>

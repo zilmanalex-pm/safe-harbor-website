@@ -39,10 +39,6 @@ export const metadata: Metadata = {
     template: '%s | Sofia Tarasov',
     default: 'Sofia Tarasov — Psychotherapist',
   },
-  icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-  },
   openGraph: {
     type: 'website',
     siteName: 'Sofia Tarasov Psychotherapy',
