@@ -23,7 +23,7 @@ export function ContactCTA({ body, buttonLabel, buttonHref }: ContactCTAProps) {
             <div className="relative w-full aspect-[4/3] rounded-card overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/pair.jpg"
+                src="/images/ship1-edited.jpg"
                 alt=""
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
