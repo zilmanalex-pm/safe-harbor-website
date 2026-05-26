@@ -32,7 +32,8 @@ export function HeroSection({
           src="/images/tree2.png"
           alt=""
           fill
-          className="object-cover opacity-[0.15]"
+          className="object-cover opacity-[0.85]"
+          style={{ mixBlendMode: 'multiply' }}
           priority
         />
       </div>
@@ -59,4 +60,17 @@ export function HeroSection({
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
             <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
               <Image
-                src="/images/sofia-h
+                src="/images/sofia-hero.jpg"
+                alt={photoAlt}
+                fill
+                className="object-cover object-top"
+                priority
+              />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
