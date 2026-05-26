@@ -6,7 +6,6 @@ import type { Locale } from '@/lib/utils'
 import { generatePageMetadata, LocalBusinessSchema } from '@/components/SEO'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { IntroSection } from '@/components/sections/IntroSection'
-import { ServicesPreview } from '@/components/sections/ServicesPreview'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 
@@ -25,11 +24,6 @@ export default async function HomePage({
 }) {
   const t = await getTranslations({ locale, namespace: 'home' })
 
-  const services = [0, 1, 2, 3].map((i) => ({
-    name: t(`services.${i}.name`),
-    description: t(`services.${i}.description`),
-  }))
-
   const trustItems = [0, 1, 2].map((i) => ({
     value: t(`trust.items.${i}.value`),
     label: t(`trust.items.${i}.label`),
@@ -46,7 +40,6 @@ export default async function HomePage({
         photoAlt={t('hero.photoAlt')}
       />
       <IntroSection body={t('intro.body')} />
-      <ServicesPreview services={services} />
       <TrustBar items={trustItems} />
       <ContactCTA
         body={t('cta.body')}

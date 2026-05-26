@@ -29,7 +29,7 @@ export function HeroSection({
       {/* Tree watercolor — full section background at low opacity */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src="/images/tree1.png"
+          src="/images/tree2.png"
           alt=""
           fill
           className="object-cover opacity-[0.15]"
@@ -59,17 +59,4 @@ export function HeroSection({
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
             <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
               <Image
-                src="/images/sofia-hero.jpg"
-                alt={photoAlt}
-                fill
-                className="object-cover object-top"
-                priority
-              />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  )
-}
+                src="/images/sofia-h

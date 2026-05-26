@@ -61,7 +61,7 @@ export function AboutSection({
           {/* Tree painting — RIGHT visually in RTL (first in DOM), 35% width */}
           <div className="relative w-full md:w-[35%] shrink-0 min-h-[340px] rounded-card overflow-hidden bg-neutral/30">
             <Image
-              src="/images/tree1.png"
+              src="/images/tree2.png"
               alt={photoAlt}
               fill
               className="object-cover object-center"
@@ -81,11 +81,4 @@ export function AboutSection({
         </div>
 
         {/* Closing sign-off */}
-        <p className="text-[20px] font-medium text-primary leading-snug">
-          {closing}
-        </p>
-
-      </div>
-    </article>
-  )
-}
+        <p className="text-[20px] font-medium text-primary 
