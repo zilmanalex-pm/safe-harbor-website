@@ -2,7 +2,6 @@
 // Bottom-of-page conversion block. Warm background, centered, one clear action.
 // No pressure language — warm and inviting, not urgent.
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -22,12 +21,11 @@ export function ContactCTA({ body, buttonLabel, buttonHref }: ContactCTAProps) {
           {/* Painting — desktop only, decorative */}
           <div className="hidden md:block flex-1" aria-hidden="true">
             <div className="relative w-full aspect-[4/3] rounded-card overflow-hidden">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/images/pair.jpg"
                 alt=""
-                fill
-                unoptimized
-                className="object-cover"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
           </div>

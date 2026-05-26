@@ -3,7 +3,6 @@
 // RTL-aware: even index = image first in DOM (RIGHT in RTL), odd = text first (RIGHT in RTL).
 // Image col: 38% width. Text col: flex-1.
 
-import Image from 'next/image'
 
 interface Service {
   slug: string
@@ -48,12 +47,11 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                     <p className="text-[16px] text-text/75 leading-[1.85]">{service.description}</p>
                   </div>
                   <div className="relative w-full md:w-[38%] shrink-0 min-h-[260px]">
-                    <Image
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                       src={service.image}
                       alt={service.name}
-                      fill
-                      unoptimized
-                      className="object-cover"
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   </div>
                 </>
@@ -61,12 +59,11 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                 // Odd: text RIGHT in RTL (first in DOM), image LEFT
                 <>
                   <div className="relative w-full md:w-[38%] shrink-0 min-h-[260px] order-2 md:order-none">
-                    <Image
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                       src={service.image}
                       alt={service.name}
-                      fill
-                      unoptimized
-                      className="object-cover"
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   </div>
                   <div className="text-col flex-1 flex flex-col justify-center px-xl py-xl order-1 md:order-none">
