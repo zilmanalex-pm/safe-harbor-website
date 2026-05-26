@@ -1,11 +1,15 @@
 // components/sections/ServicesSection.tsx — Safe Harbor
-// Full services page: page headline + one section per service.
-// Each service gets breathing room — not a bulleted list.
+// Zig-zag layout: each service alternates image left/right.
+// RTL-aware: even index = image first in DOM (RIGHT in RTL), odd = text first (RIGHT in RTL).
+// Image col: 38% width. Text col: flex-1.
+
+import Image from 'next/image'
 
 interface Service {
   slug: string
   name: string
   description: string
+  image: string
 }
 
 interface ServicesSectionProps {
@@ -17,10 +21,10 @@ interface ServicesSectionProps {
 export function ServicesSection({ headline, subheadline, services }: ServicesSectionProps) {
   return (
     <section className="bg-background py-3xl">
-      <div className="w-full max-w-[800px] mx-auto px-lg">
+      <div className="w-full max-w-[1200px] mx-auto px-lg">
 
         {/* Page header */}
-        <div className="mb-3xl">
+        <div className="mb-3xl max-w-[720px]">
           <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15] mb-md">
             {headline}
           </h1>
@@ -29,19 +33,46 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
           </p>
         </div>
 
-        {/* One block per service — generous whitespace between them */}
-        <div className="flex flex-col gap-3xl">
-          {services.map((service) => (
+        {/* Zig-zag rows */}
+        <div className="flex flex-col gap-lg">
+          {services.map((service, i) => (
             <div
               key={service.slug}
-              className="border-t border-neutral pt-2xl"
+              className="flex flex-col md:flex-row items-stretch rounded-card overflow-hidden border border-neutral/40"
             >
-              <h2 className="text-h2 font-medium text-text mb-md">
-                {service.name}
-              </h2>
-              <p className="text-body text-text/80 leading-relaxed">
-                {service.description}
-              </p>
+              {i % 2 === 0 ? (
+                // Even: image RIGHT in RTL (first in DOM), text LEFT
+                <>
+                  <div className="text-col flex-1 flex flex-col justify-center px-xl py-xl">
+                    <h2 className="text-[20px] font-semibold text-text mb-sm">{service.name}</h2>
+                    <p className="text-[16px] text-text/75 leading-[1.85]">{service.description}</p>
+                  </div>
+                  <div className="relative w-full md:w-[38%] shrink-0 min-h-[260px]">
+                    <Image
+                      src={service.image}
+                      alt={service.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </>
+              ) : (
+                // Odd: text RIGHT in RTL (first in DOM), image LEFT
+                <>
+                  <div className="relative w-full md:w-[38%] shrink-0 min-h-[260px] order-2 md:order-none">
+                    <Image
+                      src={service.image}
+                      alt={service.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="text-col flex-1 flex flex-col justify-center px-xl py-xl order-1 md:order-none">
+                    <h2 className="text-[20px] font-semibold text-text mb-sm">{service.name}</h2>
+                    <p className="text-[16px] text-text/75 leading-[1.85]">{service.description}</p>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>

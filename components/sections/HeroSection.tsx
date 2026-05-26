@@ -1,8 +1,7 @@
 // components/sections/HeroSection.tsx — Safe Harbor
-// Hero: two-column layout (text + photo), RTL-aware, mobile-first.
-// Mobile: photo on top, text below.
-// Desktop LTR: text left, photo right.
-// Desktop RTL: text right, photo left (flex-row reverses naturally with dir="rtl").
+// Hero: full-section layout with tree watercolor as background + photo column.
+// Tree image fills the entire section at low opacity behind everything.
+// Mobile: photo on top, text below. Desktop: text left (LTR) / right (RTL), photo right/left.
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,11 +24,23 @@ export function HeroSection({
   photoAlt,
 }: HeroSectionProps) {
   return (
-    <section className="min-h-[90vh] flex items-center bg-background py-3xl">
-      <div className="w-full max-w-[1200px] mx-auto px-lg">
+    <section className="relative min-h-[90vh] flex items-center bg-background py-3xl overflow-hidden">
+
+      {/* Tree watercolor — full section background at low opacity */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        <Image
+          src="/images/tree1.png"
+          alt=""
+          fill
+          className="object-cover opacity-[0.15]"
+          priority
+        />
+      </div>
+
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-lg">
         <div className="flex flex-col md:flex-row gap-2xl items-center">
 
-          {/* Text column — appears below photo on mobile (order-2), left on desktop LTR */}
+          {/* Text column */}
           <div className="flex-1 flex flex-col gap-md order-2 md:order-1 text-start">
             <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15]">
               {headline}
@@ -44,7 +55,7 @@ export function HeroSection({
             </div>
           </div>
 
-          {/* Photo column — appears on top on mobile (order-1), right on desktop LTR */}
+          {/* Photo column */}
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
             <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
               <Image

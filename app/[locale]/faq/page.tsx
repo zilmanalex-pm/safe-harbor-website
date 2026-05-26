@@ -3,7 +3,7 @@
 import type { Metadata } from 'next'
 import type { Locale } from '@/lib/utils'
 import { generatePageMetadata } from '@/components/SEO'
-import { getTranslations } from 'next-intl/server'
+import { getMessages } from 'next-intl/server'
 import { FAQSection } from '@/components/sections/FAQSection'
 
 export async function generateMetadata({
@@ -19,17 +19,13 @@ export default async function FAQPage({
 }: {
   params: { locale: string }
 }) {
-  const t = await getTranslations({ locale, namespace: 'faq' })
-
-  const questions = [0, 1, 2, 3, 4, 5, 6].map((i) => ({
-    question: t(`questions.${i}.question`),
-    answer: t(`questions.${i}.answer`),
-  }))
+  const messages = await getMessages({ locale })
+  const faq = messages.faq as any
 
   return (
     <FAQSection
-      headline={t('headline')}
-      questions={questions}
+      headline={faq.headline}
+      categories={faq.categories}
     />
   )
 }

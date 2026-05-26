@@ -1,10 +1,11 @@
 // components/sections/FAQSection.tsx — Safe Harbor
-// FAQ page using the Accordion component from Sprint 2.
-// Questions focused on new-client hesitations, not clinical explanations.
-// "use client" required — Accordion needs client-side JS for open/close animation.
+// Two-column category layout. Each category has its own accordion.
+// Header row: headline + bird watercolor image.
+// 'use client' required for Accordion open/close.
 
 'use client'
 
+import Image from 'next/image'
 import {
   Accordion,
   AccordionItem,
@@ -17,36 +18,63 @@ interface FAQItem {
   answer: string
 }
 
-interface FAQSectionProps {
-  headline: string
+interface FAQCategory {
+  name: string
   questions: FAQItem[]
 }
 
-export function FAQSection({ headline, questions }: FAQSectionProps) {
+interface FAQSectionProps {
+  headline: string
+  categories: FAQCategory[]
+}
+
+export function FAQSection({ headline, categories }: FAQSectionProps) {
   return (
     <section className="bg-background py-3xl">
-      <div className="w-full max-w-[720px] mx-auto px-lg">
+      <div className="w-full max-w-[1200px] mx-auto px-lg">
 
-        <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15] mb-3xl">
-          {headline}
-        </h1>
+        {/* Header row: headline + bird image */}
+        <div className="flex flex-row items-end justify-between mb-3xl gap-lg">
+          <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15]">
+            {headline}
+          </h1>
+          <div className="shrink-0 w-[160px] h-[120px] relative opacity-90">
+            <Image
+              src="/images/bird1.png"
+              alt=""
+              fill
+              className="object-contain object-bottom"
+              aria-hidden="true"
+            />
+          </div>
+        </div>
 
-        <Accordion type="single" collapsible className="w-full">
-          {questions.map((item, i) => (
-            <AccordionItem
-              key={i}
-              value={`item-${i}`}
-              className="border-b border-neutral"
-            >
-              <AccordionTrigger className="text-body font-medium text-text text-start py-lg hover:no-underline hover:text-primary transition-colors">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-body text-text/75 leading-relaxed pb-lg">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
+        {/* Two-column categories */}
+        <div className="flex flex-col md:flex-row gap-2xl items-start">
+          {categories.map((category, ci) => (
+            <div key={ci} className="flex-1">
+              <h2 className="text-[17px] font-semibold text-primary mb-lg">
+                {category.name}
+              </h2>
+              <Accordion type="single" collapsible className="w-full">
+                {category.questions.map((item, qi) => (
+                  <AccordionItem
+                    key={qi}
+                    value={`cat-${ci}-q-${qi}`}
+                    className="border-b border-neutral"
+                  >
+                    <AccordionTrigger className="text-[20px] font-medium text-text text-start py-lg hover:no-underline hover:text-primary transition-colors">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-[18px] text-text/75 leading-[1.85] pb-lg">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           ))}
-        </Accordion>
+        </div>
 
       </div>
     </section>

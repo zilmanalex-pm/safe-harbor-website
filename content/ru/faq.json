@@ -1,37 +1,47 @@
 {
   "meta": {
-    "title": "Вопросы | Соня Зильман",
+    "title": "Вопросы и ответы | Соня Зильман",
     "description": "Ответы на вопросы, которые возникают перед началом терапии."
   },
   "headline": "Вопросы, которые задают до первого звонка",
-  "questions": [
+  "categories": [
     {
-      "question": "Что происходит на первой встрече?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+      "name": "Личный уровень",
+      "questions": [
+        {
+          "question": "Что происходит на первой встрече?",
+          "answer": "Первая встреча — это открытый разговор. Вы рассказываете, что вас привело, я слушаю без осуждения. Не нужно знать заранее, чего именно вы хотите. В конце встречи мы вместе решим, имеет ли смысл продолжать."
+        },
+        {
+          "question": "Что если терапия мне не подойдёт?",
+          "answer": "Это абсолютно нормально. Терапевтический контакт — дело личное, и не каждый терапевт подходит каждому. Если после нескольких встреч вы почувствуете, что что-то не так — мы поговорим об этом напрямую. При необходимости я помогу найти кого-то более подходящего."
+        },
+        {
+          "question": "Всё, что я скажу, останется конфиденциальным?",
+          "answer": "Да. Всё, что говорится в кабинете, остаётся в кабинете. Есть очень узкие законодательные исключения (например, непосредственная угроза жизни), но это крайние случаи. Конфиденциальность — основа любой терапевтической работы."
+        }
+      ]
     },
     {
-      "question": "Сколько длится терапия?",
-      "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
-    },
-    {
-      "question": "В чём разница между психологом и психотерапевтом?",
-      "answer": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse."
-    },
-    {
-      "question": "Работаете ли вы онлайн?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-    },
-    {
-      "question": "Сколько стоит сессия?",
-      "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
-    },
-    {
-      "question": "Что если терапия мне не подойдёт?",
-      "answer": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
-    },
-    {
-      "question": "Всё, что я скажу, останется конфиденциальным?",
-      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+      "name": "Организационный уровень",
+      "questions": [
+        {
+          "question": "Можно ли проходить терапию онлайн?",
+          "answer": "Да. Я работаю как очно — в Ришон-ле-Ционе, так и онлайн через Zoom. Большинство клиентов обнаруживают, что расстояние не мешает глубине разговора."
+        },
+        {
+          "question": "Сколько стоит встреча?",
+          "answer": "Стоимость встречи — [X] ₪. Первая встреча обычно того же ценового диапазона. Я не работаю через кассы больничных касс."
+        },
+        {
+          "question": "Как долго длится терапия?",
+          "answer": "Это зависит от запроса. Одни приходят с конкретной темой и работают несколько месяцев. Другие ищут более глубокий процесс, который длится год и больше. На первых встречах мы вместе разберёмся, что вам подходит."
+        },
+        {
+          "question": "В чём разница между психологом и психотерапевтом?",
+          "answer": "Психолог — это академическое звание, регулируемое законом, с государственной лицензией. Психотерапевт — тот, кто прошёл подготовку по определённому методу терапии, иногда на базе психологического образования, иногда на другой основе. У меня есть степень магистра по клинической психотерапии."
+        }
+      ]
     }
   ]
 }

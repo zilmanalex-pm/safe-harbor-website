@@ -1,30 +1,34 @@
 {
   "meta": {
     "title": "Услуги | Соня Зильман",
-    "description": "Виды терапии, которые я предлагаю — индивидуальная, тревога, депрессия, парная."
+    "description": "Виды терапии — индивидуальная, тревога, депрессия, парная."
   },
   "headline": "Чем я могу помочь",
-  "subheadline": "Каждый приходит со своей историей. Вот несколько направлений, с которыми я работаю.",
+  "subheadline": "Каждый приходит со своей историей. Вот направления, с которыми я работаю.",
   "services": [
     {
       "slug": "individual",
       "name": "Индивидуальная терапия",
-      "description": "Личное и конфиденциальное пространство для работы с эмоциями, паттернами и тем, что трудно нести в одиночку. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "description": "Личное и конфиденциальное пространство для проработки эмоций, паттернов и того, что уже невозможно нести в одиночку. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "image": "/images/bird3.jpg"
     },
     {
       "slug": "anxiety",
-      "name": "Терапия тревоги",
-      "description": "Практические инструменты и глубокая работа с беспокойством, страхами и навязчивыми мыслями. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore."
+      "name": "Работа с тревогой",
+      "description": "Практические инструменты и глубокая работа с беспокойством, страхами и навязчивыми мыслями. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+      "image": "/images/girl1.jpg"
     },
     {
       "slug": "depression",
-      "name": "Терапия депрессии",
-      "description": "Тёплая и профессиональная поддержка в периоды тяжести, пустоты и потери интереса к жизни. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore."
+      "name": "Работа с депрессией",
+      "description": "Тёплая и профессиональная поддержка в периоды тяжести, пустоты и потери интереса к жизни. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "/images/mountains-reflection.jpg"
     },
     {
       "slug": "couples",
       "name": "Парная терапия",
-      "description": "Совместная работа для улучшения коммуникации, доверия и близости — иногда нужно нейтральное пространство. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor."
+      "description": "Совместная работа для улучшения общения, доверия и близости — потому что иногда нужно нейтральное пространство. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "/images/couple-boat.jpg"
     }
   ]
 }

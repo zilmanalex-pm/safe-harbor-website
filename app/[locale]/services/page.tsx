@@ -25,6 +25,7 @@ export default async function ServicesPage({
     slug: t(`services.${i}.slug`),
     name: t(`services.${i}.name`),
     description: t(`services.${i}.description`),
+    image: t(`services.${i}.image`),
   }))
 
   return (
