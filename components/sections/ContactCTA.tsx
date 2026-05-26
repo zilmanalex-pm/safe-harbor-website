@@ -26,6 +26,7 @@ export function ContactCTA({ body, buttonLabel, buttonHref }: ContactCTAProps) {
                 src="/images/pair.jpg"
                 alt=""
                 fill
+                unoptimized
                 className="object-cover"
               />
             </div>

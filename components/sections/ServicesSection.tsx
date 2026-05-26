@@ -52,6 +52,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                       src={service.image}
                       alt={service.name}
                       fill
+                      unoptimized
                       className="object-cover"
                     />
                   </div>
@@ -64,6 +65,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                       src={service.image}
                       alt={service.name}
                       fill
+                      unoptimized
                       className="object-cover"
                     />
                   </div>
