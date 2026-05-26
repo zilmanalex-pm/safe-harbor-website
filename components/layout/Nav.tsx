@@ -19,13 +19,25 @@ export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
         'bg-neutral border-b border-neutral/60',
       )}
     >
-      {/* Logo / wordmark */}
+      {/* Logo — three nested arcs. Name provided via aria-label for screen readers. */}
       <Link
         href={`/${locale}`}
-        className="text-text font-semibold text-lg tracking-tight hover:text-primary transition-colors shrink-0"
-        aria-label="Safe Harbor — home"
+        className="hover:opacity-70 transition-opacity shrink-0"
+        aria-label={siteName}
       >
-        {siteName}
+        <svg
+          viewBox="0 0 52 36"
+          width="52"
+          height="36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path d="M 18 30 A 8 8 0 0 1 34 30"  stroke="#5E8C85" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M 10 30 A 16 16 0 0 1 42 30" stroke="#5E8C85" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M 2  30 A 24 24 0 0 1 50 30" stroke="#5E8C85" strokeWidth="2.5" strokeLinecap="round"/>
+          <line x1="1" y1="30" x2="51" y2="30" stroke="#5E8C85" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
       </Link>
 
       {/* Navigation links — hidden on mobile, shown on md+ */}
