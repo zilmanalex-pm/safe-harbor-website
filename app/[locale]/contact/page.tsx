@@ -25,6 +25,7 @@ export default async function ContactPage({
     <>
       <LocalBusinessSchema />
       <ContactSection
+        h1={t('h1')}
         intro={t('intro.body')}
         responseTime={t('responseTime')}
         nameLabel={t('form.nameLabel')}

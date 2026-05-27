@@ -7,6 +7,7 @@
 import Image from 'next/image'
 
 interface AboutSectionProps {
+  h1: string
   opening: string
   approachHeadline: string
   approach: string
@@ -17,6 +18,7 @@ interface AboutSectionProps {
 }
 
 export function AboutSection({
+  h1,
   opening,
   approachHeadline,
   approach,
@@ -28,6 +30,11 @@ export function AboutSection({
   return (
     <article className="bg-background py-3xl">
       <div className="w-full max-w-[1200px] mx-auto px-lg flex flex-col gap-2xl">
+
+        {/* Page H1 — name + title + location for navigational SEO */}
+        <h1 className="text-h2 font-semibold text-text">
+          {h1}
+        </h1>
 
         {/* ROW 1: Approach (right in RTL) | Background (left in RTL) */}
         <div className="flex flex-col md:flex-row gap-xl">

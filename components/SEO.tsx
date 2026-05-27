@@ -82,9 +82,12 @@ export function LocalBusinessSchema() {
     areaServed: 'Israel',
     availableLanguage: ['Hebrew', 'Russian'],
     '@id': SITE_URL,
-    // Fill in once Sofia confirms address and phone:
-    // address: { '@type': 'PostalAddress', addressLocality: 'Tel Aviv', addressCountry: 'IL' },
-    // telephone: '',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Rishon LeZion',
+      addressCountry: 'IL',
+    },
+    telephone: '+972523777865',
   }
 
   return (

@@ -18,6 +18,7 @@ const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ID
   : '#'
 
 interface ContactSectionProps {
+  h1: string
   intro: string
   responseTime: string
   nameLabel: string
@@ -32,6 +33,7 @@ interface ContactSectionProps {
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 export function ContactSection({
+  h1,
   intro,
   responseTime,
   nameLabel,
@@ -73,6 +75,11 @@ export function ContactSection({
   return (
     <section className="bg-background py-3xl">
       <div className="w-full max-w-[640px] mx-auto px-lg">
+
+        {/* Page H1 — navigational keyword for contact page */}
+        <h1 className="text-h2 font-semibold text-text mb-xl">
+          {h1}
+        </h1>
 
         {/* Intro */}
         <div className="mb-2xl">

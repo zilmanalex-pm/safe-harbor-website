@@ -25,6 +25,7 @@ export default async function AboutPage({
     <>
       <PersonSchema />
       <AboutSection
+        h1={t('h1')}
         opening={t('opening.body')}
         approachHeadline={t('approach.headline')}
         approach={t('approach.body')}
