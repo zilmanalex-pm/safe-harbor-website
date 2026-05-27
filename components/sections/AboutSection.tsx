@@ -2,7 +2,6 @@
 // Three-row about page layout:
 // ROW 1: Approach (right in RTL) | Background (left in RTL)
 // ROW 2: Tree painting (right, 35%) | Opening intro text (left, 65%)
-// ROW 3: Two clinic photo placeholders side by side
 // CLOSING: green sign-off line
 
 import Image from 'next/image'
@@ -55,16 +54,6 @@ export function AboutSection({
               className="object-cover object-center"
               style={{ mixBlendMode: 'multiply' }}
             />
-          </div>
-        </div>
-
-        {/* ROW 3: Two clinic photo placeholders */}
-        <div className="flex flex-col md:flex-row gap-xl">
-          <div className="flex-1 min-h-[260px] rounded-card border-2 border-dashed border-neutral flex items-center justify-center text-text/30 text-sm">
-            תמונת קליניקה
-          </div>
-          <div className="flex-1 min-h-[260px] rounded-card border-2 border-dashed border-neutral flex items-center justify-center text-text/30 text-sm">
-            תמונת קליניקה
           </div>
         </div>
 
