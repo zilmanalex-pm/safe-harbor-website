@@ -1,7 +1,7 @@
 // app/[locale]/layout.tsx — Safe Harbor
-// Root layout for all locale routes (/he/* and /ru/*).
-// Handles: font loading, dir attribute, locale metadata, next-intl provider,
-// and rendering the sticky Header and Footer on every page.
+// Layout for all locale routes (/he/* and /ru/*).
+// <html> and <body> are owned by the root layout; locale-specific attributes
+// (lang, dir, font class) are applied client-side by <LocaleSetter>.
 
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -13,6 +13,7 @@ import { heebo, inter } from '@/lib/fonts'
 import { getDir, getFontClass } from '@/lib/utils'
 import type { Locale } from '@/lib/utils'
 
+import { LocaleSetter } from '@/components/LocaleSetter'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
@@ -75,6 +76,7 @@ export default async function LocaleLayout({
 
   const dir = getDir(locale as Locale)
   const fontClass = getFontClass(locale as Locale)
+  const htmlClass = `${heebo.variable} ${inter.variable}`
 
   const navLinks = [
     { href: `/${locale}`, label: t('home') },
@@ -93,43 +95,64 @@ export default async function LocaleLayout({
   const tFooter = await getTranslations({ locale, namespace: 'shared.footer' })
 
   return (
-    <html
-      lang={locale}
-      dir={dir}
-      className={`${heebo.variable} ${inter.variable}`}
-    >
-      <body className={fontClass}>
-        {/* Plausible analytics — only fires in production when NEXT_PUBLIC_SITE_URL is set */}
-        {process.env.NEXT_PUBLIC_SITE_URL && (
+    <>
+      {/* Sets lang, dir, and font classes on <html> and <body> client-side */}
+      <LocaleSetter
+        locale={locale}
+        dir={dir}
+        bodyClass={fontClass}
+        htmlClass={htmlClass}
+      />
+
+      {/* Google Analytics 4 — only fires in production */}
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <>
           <Script
-            defer
-            data-domain="sofia-tarasov.com"
-            src="https://plausible.io/js/script.js"
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
             strategy="afterInteractive"
           />
-        )}
-        <NextIntlClientProvider messages={messages}>
-          <Header
-            siteName={tShared('siteName')}
-            links={navLinks}
-            ctaLabel={t('cta')}
-            ctaHref={`/${locale}/contact`}
-            locale={locale as Locale}
-          />
-          <main>
-            {children}
-          </main>
-          <Footer
-            tagline={tFooter('tagline')}
-            copyright={tFooter('copyright')}
-            links={footerLinks}
-          />
-          <WhatsAppButton
-            number={tShared('whatsapp')}
-            ariaLabel="צרו קשר בוואטסאפ / Написать в WhatsApp"
-          />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+          <Script id="ga4-init" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            `}
+          </Script>
+        </>
+      )}
+
+      {/* Plausible analytics — only fires in production when NEXT_PUBLIC_SITE_URL is set */}
+      {process.env.NEXT_PUBLIC_SITE_URL && (
+        <Script
+          defer
+          data-domain="sofia-tarasov.com"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
+      )}
+
+      <NextIntlClientProvider messages={messages}>
+        <Header
+          siteName={tShared('siteName')}
+          links={navLinks}
+          ctaLabel={t('cta')}
+          ctaHref={`/${locale}/contact`}
+          locale={locale as Locale}
+        />
+        <main>
+          {children}
+        </main>
+        <Footer
+          tagline={tFooter('tagline')}
+          copyright={tFooter('copyright')}
+          links={footerLinks}
+        />
+        <WhatsAppButton
+          number={tShared('whatsapp')}
+          ariaLabel="צרו קשר בוואטסאפ / Написать в WhatsApp"
+        />
+      </NextIntlClientProvider>
+    </>
   )
 }

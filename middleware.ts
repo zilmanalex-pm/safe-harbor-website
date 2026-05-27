@@ -22,6 +22,11 @@ const intlMiddleware = createIntlMiddleware({
 export default function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
+  // ── Sanity Studio — bypass all middleware ───
+  if (pathname.startsWith('/studio')) {
+    return NextResponse.next()
+  }
+
   // ── Admin route protection ──────────────────
   if (pathname.startsWith('/admin')) {
     // Always allow access to the login page itself

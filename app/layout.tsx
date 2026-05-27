@@ -1,10 +1,23 @@
 // app/layout.tsx — root shell
-// Minimal wrapper. Locale-specific layout (dir, lang, fonts) lives in app/[locale]/layout.tsx.
+// Provides the required <html> and <body> tags for Next.js.
+// Locale-specific attributes (lang, dir, fonts) are applied by LocaleSetter
+// inside [locale]/layout.tsx after hydration.
+
+import { heebo, inter } from '@/lib/fonts'
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <html
+      suppressHydrationWarning
+      className={`${heebo.variable} ${inter.variable}`}
+    >
+      <body suppressHydrationWarning>
+        {children}
+      </body>
+    </html>
+  )
 }

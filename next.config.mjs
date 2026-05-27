@@ -8,6 +8,10 @@ const nextConfig = {
   // Image optimisation — WebP conversion handled automatically
   images: {
     formats: ['image/webp'],
+    remotePatterns: [
+      // Sanity image CDN
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+    ],
   },
   // Skip type-checking and lint during Vercel builds — we run these locally
   typescript: {

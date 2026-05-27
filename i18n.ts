@@ -1,25 +1,71 @@
 // i18n.ts — Safe Harbor
 // Configures next-intl message loading.
-// Lives in project root alongside /app.
-//
-// Loads all content JSON files for the active locale and merges them
-// into a single messages object. Each file becomes a namespace:
+// Fetches all content from Sanity and merges it into a single messages object.
+// Each document type becomes a namespace:
 //   home.hero.headline, about.opening.body, shared.nav.cta, etc.
+//
+// Documents in Sanity have deterministic IDs: homePage-he, aboutPage-ru, etc.
+// Run `npm run seed` once to populate Sanity with the initial content.
 
-import { notFound } from 'next/navigation'
 import { getRequestConfig } from 'next-intl/server'
+import { sanityClient } from './lib/sanity'
 
 const locales = ['he', 'ru']
 
+// GROQ projections — strip Sanity metadata, return plain objects
+const homeQuery = `*[_type == "homePage" && locale == $locale][0]{
+  meta, hero, intro, trust, cta
+}`
+const aboutQuery = `*[_type == "aboutPage" && locale == $locale][0]{
+  meta, opening, approach, background, closing, photoAlt
+}`
+const servicesQuery = `*[_type == "servicesPage" && locale == $locale][0]{
+  meta, headline, subheadline, services[]{slug, name, description, image}
+}`
+const faqQuery = `*[_type == "faqPage" && locale == $locale][0]{
+  meta, headline, categories[]{name, questions[]{question, answer}}
+}`
+const contactQuery = `*[_type == "contactPage" && locale == $locale][0]{
+  meta, intro, responseTime, form
+}`
+const sharedQuery = `*[_type == "sharedContent" && locale == $locale][0]{
+  siteName, whatsapp, nav, footer
+}`
+
 export default getRequestConfig(async ({ requestLocale }) => {
-  // Read the locale Next.js resolved from the URL
   let locale = await requestLocale
 
-  // Fall back to default if missing or unsupported
   if (!locale || !locales.includes(locale)) {
     locale = 'he'
   }
 
+  try {
+    const [shared, home, about, services, faq, contact] = await Promise.all([
+      sanityClient.fetch(sharedQuery,   { locale }),
+      sanityClient.fetch(homeQuery,     { locale }),
+      sanityClient.fetch(aboutQuery,    { locale }),
+      sanityClient.fetch(servicesQuery, { locale }),
+      sanityClient.fetch(faqQuery,      { locale }),
+      sanityClient.fetch(contactQuery,  { locale }),
+    ])
+
+    // If Sanity content isn't seeded yet, fall back to local JSON files
+    if (!home || !about) {
+      return await fallbackToJson(locale)
+    }
+
+    return {
+      locale,
+      messages: { shared, home, about, services, faq, contact },
+    }
+  } catch {
+    // Network error or env vars missing — fall back to local JSON
+    return await fallbackToJson(locale)
+  }
+})
+
+// Fallback: local JSON files (used before Sanity is seeded, or in offline dev)
+async function fallbackToJson(locale: string) {
   const [shared, home, about, services, faq, contact] = await Promise.all([
     import(`./content/${locale}/shared.json`),
     import(`./content/${locale}/home.json`),
@@ -40,4 +86,4 @@ export default getRequestConfig(async ({ requestLocale }) => {
       contact:  contact.default,
     },
   }
-})
+}
