@@ -17,6 +17,7 @@ export const aboutSchema = defineType({
         defineField({ name: 'description', type: 'text',   title: 'Meta description', rows: 2 }),
       ],
     }),
+    defineField({ name: 'h1', title: 'Page H1 (name + title + location)', type: 'string' }),
     defineField({
       name: 'opening',
       title: 'Opening paragraph (personal story)',

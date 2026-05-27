@@ -17,7 +17,7 @@ const homeQuery = `*[_type == "homePage" && locale == $locale][0]{
   meta, hero, intro, trust, cta
 }`
 const aboutQuery = `*[_type == "aboutPage" && locale == $locale][0]{
-  meta, opening, approach, background, closing, photoAlt
+  meta, h1, opening, approach, background, closing, photoAlt
 }`
 const servicesQuery = `*[_type == "servicesPage" && locale == $locale][0]{
   meta, headline, subheadline, services[]{slug, name, description, image}
@@ -26,7 +26,7 @@ const faqQuery = `*[_type == "faqPage" && locale == $locale][0]{
   meta, headline, categories[]{name, questions[]{question, answer}}
 }`
 const contactQuery = `*[_type == "contactPage" && locale == $locale][0]{
-  meta, intro, responseTime, form
+  meta, h1, intro, responseTime, form
 }`
 const sharedQuery = `*[_type == "sharedContent" && locale == $locale][0]{
   siteName, whatsapp, nav, footer

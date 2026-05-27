@@ -17,6 +17,7 @@ export const contactSchema = defineType({
         defineField({ name: 'description', type: 'text',   title: 'Meta description', rows: 2 }),
       ],
     }),
+    defineField({ name: 'h1', title: 'Page H1', type: 'string' }),
     defineField({
       name: 'intro',
       title: 'Intro text',
