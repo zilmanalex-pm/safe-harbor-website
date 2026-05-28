@@ -66,4 +66,19 @@ export function AboutSection({
         </div>
 
         {/* Closing sign-off — each sentence on its own line */}
-        <p className="text-[20p
+                <p className="text-[20px] font-medium text-primary leading-relaxed whitespace-pre-line">{closing}</p>
+
+        {/* Clinic photo placeholders */}
+        <div className="flex flex-col md:flex-row gap-xl">
+          <div className="flex-1 min-h-[260px] rounded-card border-2 border-dashed border-primary/30 flex items-center justify-center">
+            <span className="text-text/40 text-sm">תמונת קליניקה — בקרוב</span>
+          </div>
+          <div className="flex-1 min-h-[260px] rounded-card border-2 border-dashed border-primary/30 flex items-center justify-center">
+            <span className="text-text/40 text-sm">תמונת קליניקה — בקרוב</span>
+          </div>
+        </div>
+
+      </div>
+    </article>
+  )
+}

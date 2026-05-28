@@ -123,4 +123,6 @@ export interface FooterProps {
   copyright: string
   links: Array<{
     label: string
-    h
+    href: string
+  }>
+}

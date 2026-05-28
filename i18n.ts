@@ -39,34 +39,11 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = 'he'
   }
 
-  // Try Sanity first; fall back to local JSON if Sanity is unreachable or returns nothing
-  try {
-    const [shared, home, about, services, faq, contact] = await Promise.all([
-      sanityClient.fetch(sharedQuery,   { locale }),
-      sanityClient.fetch(homeQuery,     { locale }),
-      sanityClient.fetch(aboutQuery,    { locale }),
-      sanityClient.fetch(servicesQuery, { locale }),
-      sanityClient.fetch(faqQuery,      { locale }),
-      sanityClient.fetch(contactQuery,  { locale }),
-    ])
-
-    // If Sanity returns nulls (not yet seeded), fall back to JSON
-    if (!home || !shared) {
-      console.warn('[i18n] Sanity returned null for locale', locale, '— falling back to JSON')
-      return await fallbackToJson(locale)
-    }
-
-    return {
-      locale,
-      messages: { shared, home, about, services, faq, contact },
-    }
-  } catch (err) {
-    console.error('[i18n] Sanity fetch failed for locale', locale, err)
-    return await fallbackToJson(locale)
-  }
+  // Always load from local JSON (Sanity wired up in a later sprint)
+  return await fallbackToJson(locale)
 })
 
-// Fallback: local JSON files (used before Sanity is seeded, or in offline dev)
+// Fallback: local JSON files
 async function fallbackToJson(locale: string) {
   const [shared, home, about, services, faq, contact] = await Promise.all([
     import(`./content/${locale}/shared.json`),
@@ -80,4 +57,12 @@ async function fallbackToJson(locale: string) {
   return {
     locale,
     messages: {
-      shared:   s
+      shared:   (shared   as any).default ?? shared,
+      home:     (home     as any).default ?? home,
+      about:    (about    as any).default ?? about,
+      services: (services as any).default ?? services,
+      faq:      (faq      as any).default ?? faq,
+      contact:  (contact  as any).default ?? contact,
+    },
+  }
+}

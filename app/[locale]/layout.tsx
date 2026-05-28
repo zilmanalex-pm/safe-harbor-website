@@ -153,4 +153,12 @@ export default async function LocaleLayout({
           number={tShared('whatsapp')}
           ariaLabel="צרו קשר בוואטסאפ / Написать в WhatsApp"
         />
-     
+      </NextIntlClientProvider>
+    </>
+  )
+}
+
+      </NextIntlClientProvider>
+    </>
+  )
+}
