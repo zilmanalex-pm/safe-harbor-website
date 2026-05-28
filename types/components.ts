@@ -119,6 +119,7 @@ export interface NavProps {
 // ─────────────────────────────────────────────
 export interface FooterProps {
   tagline: string
+  drawings: string
   copyright: string
   links: Array<{
     label: string

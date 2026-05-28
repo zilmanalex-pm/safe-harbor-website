@@ -145,6 +145,7 @@ export default async function LocaleLayout({
         </main>
         <Footer
           tagline={tFooter('tagline')}
+          drawings={tFooter('drawings')}
           copyright={tFooter('copyright')}
           links={footerLinks}
         />

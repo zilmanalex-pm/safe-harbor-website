@@ -13,8 +13,9 @@
     "emailLabel": "Email",
     "phoneLabel": "Телефон (необязательно)",
     "messageLabel": "Что на душе",
-    "submitLabel": "Написать в WhatsApp",
+    "submitLabel": "Отправить сообщение",
+    "validationMessage": "Пожалуйста, заполните обязательные поля.",
     "successMessage": "Получила. Отвечу в течение одного рабочего дня.",
-    "errorMessage": "Что-то пошло не так. Попробуйте ещё раз или напишите напрямую в WhatsApp."
+    "errorMessage": "Что-то пошло не так. Попробуйте ещё раз."
   }
 }

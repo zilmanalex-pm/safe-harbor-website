@@ -4,9 +4,6 @@
 // Mobile: photo on top, text below. Desktop: text left (LTR) / right (RTL), photo right/left.
 
 import Image from 'next/image'
-import Link from 'next/link'
-import { buttonVariants } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 interface HeroSectionProps {
   headline: string
@@ -49,11 +46,6 @@ export function HeroSection({
             <p className="text-body text-text/70 max-w-md leading-relaxed">
               {subheadline}
             </p>
-            <div className="mt-sm">
-              <Link href={ctaHref} className={cn(buttonVariants({ size: 'lg' }))}>
-                {ctaLabel}
-              </Link>
-            </div>
           </div>
 
           {/* Photo column */}

@@ -1,8 +1,7 @@
 // components/sections/ContactSection.tsx — Safe Harbor
-// Contact form using Formspree for submission.
-// Sprint 6: replace FORMSPREE_ENDPOINT placeholder with real form ID from environment.
-// Form UI is complete — only the action endpoint needs wiring.
-// "use client" required for form state management.
+// Contact form with client-side validation.
+// Required fields (name, email, message) turn red-bordered if empty on submit.
+// Formspree endpoint wired via NEXT_PUBLIC_FORMSPREE_ID env var (Sprint 6).
 
 'use client'
 
@@ -10,9 +9,8 @@ import { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
-// Sprint 6: set NEXT_PUBLIC_FORMSPREE_ID in .env.local and on Vercel
-// Formspree destination email: sonyatar7@gmail.com — configure in Formspree dashboard
 const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ID
   ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`
   : '#'
@@ -26,11 +24,12 @@ interface ContactSectionProps {
   phoneLabel: string
   messageLabel: string
   submitLabel: string
+  validationMessage: string
   successMessage: string
   errorMessage: string
 }
 
-type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error' | 'invalid'
 
 export function ContactSection({
   h1,
@@ -41,25 +40,47 @@ export function ContactSection({
   phoneLabel,
   messageLabel,
   submitLabel,
+  validationMessage,
   successMessage,
   errorMessage,
 }: ContactSectionProps) {
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [errors, setErrors] = useState<Record<string, boolean>>({})
+
+  function validate(form: HTMLFormElement) {
+    const name = (form.elements.namedItem('name') as HTMLInputElement)?.value.trim()
+    const email = (form.elements.namedItem('email') as HTMLInputElement)?.value.trim()
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement)?.value.trim()
+    const newErrors: Record<string, boolean> = {}
+    if (!name) newErrors.name = true
+    if (!email) newErrors.email = true
+    if (!message) newErrors.message = true
+    return newErrors
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    const form = e.currentTarget
+    const newErrors = validate(form)
 
-    if (FORMSPREE_ENDPOINT === '#') {
-      // Formspree not yet wired up — silent in production, logged in dev
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('ContactSection: NEXT_PUBLIC_FORMSPREE_ID is not set.')
-      }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      setStatus('invalid')
       return
     }
 
+    setErrors({})
     setStatus('submitting')
-    const data = new FormData(e.currentTarget)
 
+    if (FORMSPREE_ENDPOINT === '#') {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('ContactSection: NEXT_PUBLIC_FORMSPREE_ID is not set.')
+      }
+      setStatus('idle')
+      return
+    }
+
+    const data = new FormData(form)
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
@@ -76,48 +97,48 @@ export function ContactSection({
     <section className="bg-background py-3xl">
       <div className="w-full max-w-[640px] mx-auto px-lg">
 
-        {/* Page H1 — navigational keyword for contact page */}
         <h1 className="text-h2 font-semibold text-text mb-xl">
           {h1}
         </h1>
 
-        {/* Intro */}
         <div className="mb-2xl">
-          <p className="text-body text-text/80 leading-relaxed mb-sm">
-            {intro}
-          </p>
-          <p className="text-small text-text/50">
-            {responseTime}
-          </p>
+          <p className="text-body text-text/80 leading-relaxed mb-sm">{intro}</p>
+          <p className="text-small text-text/50">{responseTime}</p>
         </div>
 
-        {/* Success state */}
         {status === 'success' ? (
           <div className="bg-primary/10 rounded-card p-lg text-center">
-            <p className="text-body font-medium text-text">✓</p>
-            <p className="text-body text-text/80 mt-xs">
-              {successMessage}
-            </p>
+            <p className="text-body text-text/80 mt-xs">{successMessage}</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-md" noValidate>
 
-            <Input
-              name="name"
-              label={nameLabel}
-              required
-              autoComplete="name"
-              disabled={status === 'submitting'}
-            />
+            <div>
+              <Input
+                name="name"
+                label={nameLabel}
+                autoComplete="name"
+                disabled={status === 'submitting'}
+                className={cn(errors.name && 'border-red-400 focus-visible:ring-red-300')}
+              />
+              {errors.name && (
+                <p className="text-small text-red-500 mt-xs">{nameLabel} *</p>
+              )}
+            </div>
 
-            <Input
-              name="email"
-              type="email"
-              label={emailLabel}
-              required
-              autoComplete="email"
-              disabled={status === 'submitting'}
-            />
+            <div>
+              <Input
+                name="email"
+                type="email"
+                label={emailLabel}
+                autoComplete="email"
+                disabled={status === 'submitting'}
+                className={cn(errors.email && 'border-red-400 focus-visible:ring-red-300')}
+              />
+              {errors.email && (
+                <p className="text-small text-red-500 mt-xs">{emailLabel} *</p>
+              )}
+            </div>
 
             <Input
               name="phone"
@@ -127,18 +148,25 @@ export function ContactSection({
               disabled={status === 'submitting'}
             />
 
-            <Textarea
-              name="message"
-              label={messageLabel}
-              required
-              rows={5}
-              disabled={status === 'submitting'}
-            />
+            <div>
+              <Textarea
+                name="message"
+                label={messageLabel}
+                rows={5}
+                disabled={status === 'submitting'}
+                className={cn(errors.message && 'border-red-400 focus-visible:ring-red-300')}
+              />
+              {errors.message && (
+                <p className="text-small text-red-500 mt-xs">{messageLabel} *</p>
+              )}
+            </div>
+
+            {status === 'invalid' && (
+              <p className="text-small text-red-500" role="alert">{validationMessage}</p>
+            )}
 
             {status === 'error' && (
-              <p className="text-small text-red-500" role="alert">
-                {errorMessage}
-              </p>
+              <p className="text-small text-red-500" role="alert">{errorMessage}</p>
             )}
 
             <div className="mt-sm">

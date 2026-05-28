@@ -33,6 +33,7 @@ export default async function ContactPage({
         phoneLabel={t('form.phoneLabel')}
         messageLabel={t('form.messageLabel')}
         submitLabel={t('form.submitLabel')}
+        validationMessage={t('form.validationMessage')}
         successMessage={t('form.successMessage')}
         errorMessage={t('form.errorMessage')}
       />

@@ -39,29 +39,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = 'he'
   }
 
-  try {
-    const [shared, home, about, services, faq, contact] = await Promise.all([
-      sanityClient.fetch(sharedQuery,   { locale }),
-      sanityClient.fetch(homeQuery,     { locale }),
-      sanityClient.fetch(aboutQuery,    { locale }),
-      sanityClient.fetch(servicesQuery, { locale }),
-      sanityClient.fetch(faqQuery,      { locale }),
-      sanityClient.fetch(contactQuery,  { locale }),
-    ])
-
-    // If Sanity content isn't seeded yet, fall back to local JSON files
-    if (!home || !about) {
-      return await fallbackToJson(locale)
-    }
-
-    return {
-      locale,
-      messages: { shared, home, about, services, faq, contact },
-    }
-  } catch {
-    // Network error or env vars missing — fall back to local JSON
-    return await fallbackToJson(locale)
-  }
+  // Always load from local JSON files (Sanity will be wired up in Sprint 6)
+  return await fallbackToJson(locale)
 })
 
 // Fallback: local JSON files (used before Sanity is seeded, or in offline dev)

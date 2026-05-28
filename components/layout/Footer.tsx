@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import type { FooterProps } from '@/types/components'
 
-export function Footer({ tagline, copyright, links }: FooterProps) {
+export function Footer({ tagline, drawings, copyright, links }: FooterProps) {
   return (
     <footer
       className={cn(
@@ -38,9 +38,12 @@ export function Footer({ tagline, copyright, links }: FooterProps) {
         </div>
 
         {/* Divider */}
-        <div className="mt-lg border-t border-text/10 pt-lg">
+        <div className="mt-lg border-t border-text/10 pt-lg flex flex-col md:flex-row md:items-center md:justify-between gap-xs">
           <p className="text-text/70 text-xs">
             {copyright}
+          </p>
+          <p className="text-text/50 text-xs italic">
+            {drawings}
           </p>
         </div>
 

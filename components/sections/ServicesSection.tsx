@@ -27,7 +27,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
           <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15] mb-md">
             {headline}
           </h1>
-          <p className="text-body text-text/70 leading-relaxed">
+          <p className="text-body text-text/70 leading-relaxed whitespace-pre-line">
             {subheadline}
           </p>
         </div>
@@ -43,7 +43,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                 // Even: image RIGHT in RTL (first in DOM), text LEFT
                 <>
                   <div className="text-col flex-1 flex flex-col justify-center px-xl py-xl">
-                    <h2 className="text-[20px] font-semibold text-text mb-sm">{service.name}</h2>
+                    <h2 className="text-[20px] font-semibold text-primary mb-sm">{service.name}</h2>
                     <p className="text-[16px] text-text/75 leading-[1.85]">{service.description}</p>
                   </div>
                   <div className="relative w-full md:w-[38%] shrink-0 min-h-[260px]">
@@ -67,7 +67,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                     />
                   </div>
                   <div className="text-col flex-1 flex flex-col justify-center px-xl py-xl order-1 md:order-none">
-                    <h2 className="text-[20px] font-semibold text-text mb-sm">{service.name}</h2>
+                    <h2 className="text-[20px] font-semibold text-primary mb-sm">{service.name}</h2>
                     <p className="text-[16px] text-text/75 leading-[1.85]">{service.description}</p>
                   </div>
                 </>
