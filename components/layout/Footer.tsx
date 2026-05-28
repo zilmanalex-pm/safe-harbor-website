@@ -40,14 +40,4 @@ export function Footer({ tagline, drawings, copyright, links }: FooterProps) {
         {/* Divider */}
         <div className="mt-lg border-t border-text/10 pt-lg flex flex-col md:flex-row md:items-center md:justify-between gap-xs">
           <p className="text-text/70 text-xs">
-            {copyright}
-          </p>
-          <p className="text-text/50 text-xs italic">
-            {drawings}
-          </p>
-        </div>
-
-      </div>
-    </footer>
-  )
-}
+            {copyr

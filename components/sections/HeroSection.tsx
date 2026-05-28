@@ -52,7 +52,7 @@ export function HeroSection({
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
             <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
               <Image
-                src="/images/sofia-hero.jpg"
+                src="/images/Sofia.jpeg"
                 alt={photoAlt}
                 fill
                 className="object-cover object-top"

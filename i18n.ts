@@ -80,12 +80,4 @@ async function fallbackToJson(locale: string) {
   return {
     locale,
     messages: {
-      shared:   shared.default,
-      home:     home.default,
-      about:    about.default,
-      services: services.default,
-      faq:      faq.default,
-      contact:  contact.default,
-    },
-  }
-}
+      shared:   s

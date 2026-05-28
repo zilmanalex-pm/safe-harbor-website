@@ -66,11 +66,4 @@ export function AboutSection({
         </div>
 
         {/* Closing sign-off — each sentence on its own line */}
-        <p className="text-[20px] font-medium text-primary leading-relaxed whitespace-pre-line">
-          {closing}
-        </p>
-
-      </div>
-    </article>
-  )
-}
+        <p className="text-[20p
