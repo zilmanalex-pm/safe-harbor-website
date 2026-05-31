@@ -1,13 +1,12 @@
 // components/sections/TrustBar.tsx — Safe Harbor
-// Horizontal credibility strip between ServicesPreview and ContactCTA.
-// Communicates years of experience, credential, and languages at a glance.
+// Horizontal credibility strip. Renders whatever is in the items array — 3 or 4 or more.
 // Mobile: stacks vertically. Desktop: single horizontal row with dividers.
-// RTL-aware via logical CSS properties and rtl.ts helpers.
 
-import { Clock, GraduationCap, Languages } from 'lucide-react'
+import { Clock, GraduationCap, Languages, Users } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const trustIcons = [Clock, GraduationCap, Languages]
+// One icon per position — falls back to Users for any extra items
+const trustIcons = [Clock, GraduationCap, Languages, Users]
 
 interface TrustItem {
   value: string
@@ -30,23 +29,26 @@ export function TrustBar({ items }: TrustBarProps) {
           )}
           role="list"
         >
-          {items.map((item, i) => (
-            <li
-              key={i}
-              className={cn(
-                'flex-1 flex flex-col items-center text-center gap-xs',
-                i > 0 && 'md:border-s md:border-primary/20',
-              )}
-            >
-              {(() => { const Icon = trustIcons[i]; return Icon ? <Icon className="w-5 h-5 text-primary" aria-hidden="true" /> : null })()}
-              <span className="text-h2 font-semibold text-primary leading-none">
-                {item.value}
-              </span>
-              <span className="text-small text-text/60 tracking-wide uppercase">
-                {item.label}
-              </span>
-            </li>
-          ))}
+          {items.map((item, i) => {
+            const Icon = trustIcons[i] ?? Users
+            return (
+              <li
+                key={i}
+                className={cn(
+                  'flex-1 flex flex-col items-center text-center gap-xs',
+                  i > 0 && 'md:border-s md:border-primary/20',
+                )}
+              >
+                <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
+                <span className="text-h2 font-semibold text-primary leading-none">
+                  {item.value}
+                </span>
+                <span className="text-small text-text/80 tracking-wide uppercase">
+                  {item.label}
+                </span>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

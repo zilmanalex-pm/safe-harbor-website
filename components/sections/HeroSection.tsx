@@ -1,13 +1,17 @@
 // components/sections/HeroSection.tsx — Safe Harbor
-// Hero: full-section layout with tree watercolor as background + photo column.
-// Tree image fills the entire section at low opacity behind everything.
+// Hero: bird watercolor background + Sofia's photo column.
+// Bird image fills the entire section behind everything.
 // Mobile: photo on top, text below. Desktop: text left (LTR) / right (RTL), photo right/left.
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
 
 interface HeroSectionProps {
   headline: string
-  subheadline: string
+  nameplate?: string
+  subheadline?: string   // kept optional for backward compat — not shown if absent
   ctaLabel: string
   ctaHref: string
   photoAlt: string
@@ -15,7 +19,7 @@ interface HeroSectionProps {
 
 export function HeroSection({
   headline,
-  subheadline,
+  nameplate,
   ctaLabel,
   ctaHref,
   photoAlt,
@@ -23,13 +27,13 @@ export function HeroSection({
   return (
     <section className="relative min-h-[90vh] flex items-center bg-background py-3xl overflow-hidden">
 
-      {/* Tree watercolor — full section background at low opacity */}
+      {/* Bird watercolor — full section background at low opacity */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src="/images/tree2.png"
+          src="/images/bird1.png"
           alt=""
           fill
-          className="object-cover opacity-[0.85]"
+          className="object-cover object-center opacity-[0.80]"
           style={{ mixBlendMode: 'multiply' }}
           priority
         />
@@ -43,14 +47,22 @@ export function HeroSection({
             <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15]">
               {headline}
             </h1>
-            <p className="text-body text-text/70 max-w-md leading-relaxed">
-              {subheadline}
-            </p>
+
+            {/* Nameplate — byline below headline */}
+            {nameplate && (
+              <p className="text-small text-text/60 tracking-wide">
+                {nameplate}
+              </p>
+            )}
+
+            <Link href={ctaHref} className={cn(buttonVariants({ size: 'lg' }), 'self-start mt-sm')}>
+              {ctaLabel}
+            </Link>
           </div>
 
-          {/* Photo column */}
+          {/* Photo column — larger than before */}
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
-            <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
+            <div className="relative w-full max-w-[520px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
               <Image
                 src="/images/Sofia.jpeg"
                 alt={photoAlt}
