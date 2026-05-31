@@ -22,11 +22,9 @@ export const homeSchema = defineType({
       title: 'Hero section',
       type: 'object',
       fields: [
-        defineField({ name: 'headline',    type: 'string', title: 'Main headline' }),
-        defineField({ name: 'nameplate',   type: 'string', title: 'Nameplate (name + credentials line)' }),
-        defineField({ name: 'subheadline', type: 'text',   title: 'Subheadline', rows: 2 }),
-        defineField({ name: 'ctaLabel',    type: 'string', title: 'Button label' }),
-        defineField({ name: 'photoAlt',    type: 'string', title: 'Photo alt text' }),
+        defineField({ name: 'headline',  type: 'string', title: 'Main headline' }),
+        defineField({ name: 'nameplate', type: 'string', title: 'Nameplate (name · credentials · location)' }),
+        defineField({ name: 'photoAlt', type: 'string', title: 'Photo alt text' }),
       ],
     }),
     defineField({
@@ -56,15 +54,6 @@ export const homeSchema = defineType({
             },
           ],
         }),
-      ],
-    }),
-    defineField({
-      name: 'cta',
-      title: 'Bottom CTA section',
-      type: 'object',
-      fields: [
-        defineField({ name: 'body',        type: 'text',   title: 'Text', rows: 2 }),
-        defineField({ name: 'buttonLabel', type: 'string', title: 'Button label' }),
       ],
     }),
   ],

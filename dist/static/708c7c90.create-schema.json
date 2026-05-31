@@ -1,0 +1,533 @@
+[
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "name": "locale",
+        "type": "string"
+      },
+      {
+        "name": "siteName",
+        "type": "string",
+        "title": "Site name"
+      },
+      {
+        "description": "Digits only, no + sign. E.g. 972523777865",
+        "name": "whatsapp",
+        "type": "string",
+        "title": "WhatsApp number"
+      },
+      {
+        "fields": [
+          {
+            "name": "home",
+            "type": "string"
+          },
+          {
+            "name": "about",
+            "type": "string"
+          },
+          {
+            "name": "services",
+            "type": "string"
+          },
+          {
+            "name": "faq",
+            "type": "string",
+            "title": "FAQ"
+          },
+          {
+            "name": "contact",
+            "type": "string"
+          },
+          {
+            "name": "cta",
+            "type": "string",
+            "title": "Header CTA button"
+          }
+        ],
+        "name": "nav",
+        "type": "object",
+        "title": "Navigation labels"
+      },
+      {
+        "fields": [
+          {
+            "name": "tagline",
+            "type": "string"
+          },
+          {
+            "name": "copyright",
+            "type": "string",
+            "title": "Copyright text"
+          }
+        ],
+        "name": "footer",
+        "type": "object"
+      }
+    ],
+    "name": "sharedContent",
+    "type": "document",
+    "title": "Shared / Navigation"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "name": "locale",
+        "type": "string"
+      },
+      {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "title": "Page title (browser tab)"
+          },
+          {
+            "rows": 2,
+            "name": "description",
+            "type": "text",
+            "title": "Meta description"
+          }
+        ],
+        "name": "meta",
+        "type": "object",
+        "title": "SEO"
+      },
+      {
+        "fields": [
+          {
+            "name": "headline",
+            "type": "string",
+            "title": "Main headline"
+          },
+          {
+            "name": "nameplate",
+            "type": "string",
+            "title": "Nameplate (name + credentials line)"
+          },
+          {
+            "rows": 2,
+            "name": "subheadline",
+            "type": "text"
+          },
+          {
+            "name": "ctaLabel",
+            "type": "string",
+            "title": "Button label"
+          },
+          {
+            "name": "photoAlt",
+            "type": "string",
+            "title": "Photo alt text"
+          }
+        ],
+        "name": "hero",
+        "type": "object",
+        "title": "Hero section"
+      },
+      {
+        "fields": [
+          {
+            "rows": 3,
+            "name": "body",
+            "type": "text",
+            "title": "Text"
+          }
+        ],
+        "name": "intro",
+        "type": "object",
+        "title": "Intro paragraph"
+      },
+      {
+        "fields": [
+          {
+            "of": [
+              {
+                "fields": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "title": "Value (e.g. \"2017\")"
+                  },
+                  {
+                    "name": "label",
+                    "type": "string"
+                  }
+                ],
+                "type": "object"
+              }
+            ],
+            "name": "items",
+            "type": "array"
+          }
+        ],
+        "name": "trust",
+        "type": "object",
+        "title": "Trust bar (3 stat blocks)"
+      },
+      {
+        "fields": [
+          {
+            "rows": 2,
+            "name": "body",
+            "type": "text",
+            "title": "Text"
+          },
+          {
+            "name": "buttonLabel",
+            "type": "string",
+            "title": "Button label"
+          }
+        ],
+        "name": "cta",
+        "type": "object",
+        "title": "Bottom CTA section"
+      }
+    ],
+    "name": "homePage",
+    "type": "document",
+    "title": "Homepage"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "name": "locale",
+        "type": "string"
+      },
+      {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "title": "Page title"
+          },
+          {
+            "rows": 2,
+            "name": "description",
+            "type": "text",
+            "title": "Meta description"
+          }
+        ],
+        "name": "meta",
+        "type": "object",
+        "title": "SEO"
+      },
+      {
+        "name": "h1",
+        "type": "string",
+        "title": "Page H1 (name + title + location)"
+      },
+      {
+        "fields": [
+          {
+            "rows": 5,
+            "name": "body",
+            "type": "text",
+            "title": "Text"
+          }
+        ],
+        "name": "opening",
+        "type": "object",
+        "title": "Opening paragraph (personal story)"
+      },
+      {
+        "fields": [
+          {
+            "name": "headline",
+            "type": "string"
+          },
+          {
+            "rows": 5,
+            "name": "body",
+            "type": "text",
+            "title": "Text"
+          }
+        ],
+        "name": "approach",
+        "type": "object",
+        "title": "How I work section"
+      },
+      {
+        "fields": [
+          {
+            "name": "headline",
+            "type": "string"
+          },
+          {
+            "rows": 4,
+            "name": "body",
+            "type": "text",
+            "title": "Text"
+          }
+        ],
+        "name": "background",
+        "type": "object",
+        "title": "Education & background section"
+      },
+      {
+        "fields": [
+          {
+            "rows": 3,
+            "name": "body",
+            "type": "text",
+            "title": "Text"
+          }
+        ],
+        "name": "closing",
+        "type": "object",
+        "title": "Closing paragraph"
+      },
+      {
+        "name": "photoAlt",
+        "type": "string",
+        "title": "Photo alt text"
+      }
+    ],
+    "name": "aboutPage",
+    "type": "document",
+    "title": "About page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "name": "locale",
+        "type": "string"
+      },
+      {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "title": "Page title"
+          },
+          {
+            "rows": 2,
+            "name": "description",
+            "type": "text",
+            "title": "Meta description"
+          }
+        ],
+        "name": "meta",
+        "type": "object",
+        "title": "SEO"
+      },
+      {
+        "name": "headline",
+        "type": "string",
+        "title": "Page headline"
+      },
+      {
+        "name": "subheadline",
+        "type": "string",
+        "title": "Page subheadline"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "readOnly": false,
+                "name": "slug",
+                "type": "string",
+                "title": "Slug (do not change)"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "title": "Service name"
+              },
+              {
+                "rows": 5,
+                "name": "description",
+                "type": "text"
+              },
+              {
+                "name": "image",
+                "type": "string",
+                "title": "Image path (e.g. /images/bird3.jpg)"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "services",
+        "type": "array",
+        "title": "Service blocks"
+      }
+    ],
+    "name": "servicesPage",
+    "type": "document",
+    "title": "Services page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "name": "locale",
+        "type": "string"
+      },
+      {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "title": "Page title"
+          },
+          {
+            "rows": 2,
+            "name": "description",
+            "type": "text",
+            "title": "Meta description"
+          }
+        ],
+        "name": "meta",
+        "type": "object",
+        "title": "SEO"
+      },
+      {
+        "name": "headline",
+        "type": "string",
+        "title": "Page headline"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "title": "Category name"
+              },
+              {
+                "of": [
+                  {
+                    "fields": [
+                      {
+                        "name": "question",
+                        "type": "string"
+                      },
+                      {
+                        "rows": 4,
+                        "name": "answer",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                ],
+                "name": "questions",
+                "type": "array"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "categories",
+        "type": "array",
+        "title": "Question categories"
+      }
+    ],
+    "name": "faqPage",
+    "type": "document",
+    "title": "FAQ page"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "name": "locale",
+        "type": "string"
+      },
+      {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "title": "Page title"
+          },
+          {
+            "rows": 2,
+            "name": "description",
+            "type": "text",
+            "title": "Meta description"
+          }
+        ],
+        "name": "meta",
+        "type": "object",
+        "title": "SEO"
+      },
+      {
+        "name": "h1",
+        "type": "string",
+        "title": "Page H1"
+      },
+      {
+        "fields": [
+          {
+            "rows": 3,
+            "name": "body",
+            "type": "text",
+            "title": "Text"
+          }
+        ],
+        "name": "intro",
+        "type": "object",
+        "title": "Intro text"
+      },
+      {
+        "name": "responseTime",
+        "type": "string",
+        "title": "Response time note"
+      },
+      {
+        "fields": [
+          {
+            "name": "nameLabel",
+            "type": "string",
+            "title": "Name field label"
+          },
+          {
+            "name": "emailLabel",
+            "type": "string",
+            "title": "Email field label"
+          },
+          {
+            "name": "phoneLabel",
+            "type": "string",
+            "title": "Phone field label"
+          },
+          {
+            "name": "messageLabel",
+            "type": "string",
+            "title": "Message field label"
+          },
+          {
+            "name": "submitLabel",
+            "type": "string",
+            "title": "Submit button label"
+          },
+          {
+            "name": "successMessage",
+            "type": "string",
+            "title": "Success message"
+          },
+          {
+            "name": "errorMessage",
+            "type": "string",
+            "title": "Error message"
+          }
+        ],
+        "name": "form",
+        "type": "object",
+        "title": "Form labels"
+      }
+    ],
+    "name": "contactPage",
+    "type": "document",
+    "title": "Contact page"
+  }
+]

@@ -33,7 +33,6 @@ export const sharedSchema = defineType({
       title: 'Footer',
       type: 'object',
       fields: [
-        defineField({ name: 'tagline',   type: 'string', title: 'Tagline' }),
         defineField({ name: 'copyright', type: 'string', title: 'Copyright text' }),
       ],
     }),
