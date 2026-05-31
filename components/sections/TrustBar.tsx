@@ -25,6 +25,7 @@ export function TrustBar({ items }: TrustBarProps) {
           className={cn(
             'flex flex-col md:flex-row',
             'items-center',
+            'justify-center',
             'gap-lg md:gap-0',
           )}
           role="list"
@@ -35,7 +36,8 @@ export function TrustBar({ items }: TrustBarProps) {
               <li
                 key={i}
                 className={cn(
-                  'flex-1 flex flex-col items-center text-center gap-xs',
+                  'flex flex-col items-center text-center gap-xs',
+                  'md:px-2xl',
                   i > 0 && 'md:border-s md:border-primary/20',
                 )}
               >
@@ -43,7 +45,7 @@ export function TrustBar({ items }: TrustBarProps) {
                 <span className="text-h2 font-semibold text-primary leading-none">
                   {item.value}
                 </span>
-                <span className="text-small text-text/80 tracking-wide uppercase">
+                <span className="text-small text-text/80">
                   {item.label}
                 </span>
               </li>

@@ -40,7 +40,7 @@ export function FAQSection({ headline, categories }: FAQSectionProps) {
           </h1>
           <div className="shrink-0 w-[160px] h-[120px] relative opacity-90">
             <Image
-              src="/images/bird1.png"
+              src="/images/cat.png"
               alt=""
               fill
               className="object-contain object-bottom"
