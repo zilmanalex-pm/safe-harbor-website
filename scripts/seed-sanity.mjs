@@ -30,6 +30,25 @@ function readJson(locale, page) {
   return JSON.parse(readFileSync(path, 'utf-8'))
 }
 
+// Sanity requires _key on every array item. Walk the object tree and add them.
+let keyCounter = 0
+function withKeys(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => {
+      const keyed = { _key: `k${keyCounter++}`, ...withKeys(item) }
+      return keyed
+    })
+  }
+  if (value && typeof value === 'object') {
+    const out = {}
+    for (const [k, v] of Object.entries(value)) {
+      out[k] = withKeys(v)
+    }
+    return out
+  }
+  return value
+}
+
 async function seed() {
   const locales = ['he', 'ru']
 
@@ -60,7 +79,7 @@ async function seed() {
         meta:  home.meta,
         hero:  home.hero,
         intro: home.intro,
-        trust: home.trust,
+        trust: { items: withKeys(home.trust.items) },
         cta:   home.cta,
       },
       {
@@ -68,6 +87,7 @@ async function seed() {
         _type: 'aboutPage',
         locale,
         meta:       about.meta,
+        h1:         about.h1,
         opening:    about.opening,
         approach:   about.approach,
         background: about.background,
@@ -81,7 +101,7 @@ async function seed() {
         meta:        services.meta,
         headline:    services.headline,
         subheadline: services.subheadline,
-        services:    services.services,
+        services:    withKeys(services.services),
       },
       {
         _id:  `faqPage-${locale}`,
@@ -89,13 +109,17 @@ async function seed() {
         locale,
         meta:       faq.meta,
         headline:   faq.headline,
-        categories: faq.categories,
+        categories: withKeys(faq.categories.map(cat => ({
+          ...cat,
+          questions: withKeys(cat.questions),
+        }))),
       },
       {
         _id:  `contactPage-${locale}`,
         _type: 'contactPage',
         locale,
         meta:         contact.meta,
+        h1:           contact.h1,
         intro:        contact.intro,
         responseTime: contact.responseTime,
         form:         contact.form,
