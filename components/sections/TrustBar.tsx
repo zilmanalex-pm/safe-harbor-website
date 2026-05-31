@@ -45,7 +45,7 @@ export function TrustBar({ items }: TrustBarProps) {
                 <span className="text-h2 font-semibold text-primary leading-none">
                   {item.value}
                 </span>
-                <span className="text-small text-text/80">
+                <span className="text-small text-text/80 md:whitespace-nowrap">
                   {item.label}
                 </span>
               </li>

@@ -38,7 +38,7 @@ export function FAQSection({ headline, categories }: FAQSectionProps) {
           <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15]">
             {headline}
           </h1>
-          <div className="shrink-0 w-[160px] h-[120px] relative opacity-90">
+          <div className="shrink-0 w-[240px] h-[180px] relative opacity-90">
             <Image
               src="/images/cat.png"
               alt=""

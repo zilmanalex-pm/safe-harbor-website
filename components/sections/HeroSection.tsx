@@ -26,8 +26,8 @@ export function HeroSection({
           {/* Text column */}
           <div className="flex-1 flex flex-col gap-md order-2 md:order-1 text-start">
 
-            {/* Bird — small, above the headline */}
-            <div className="w-[100px] h-[75px] relative" aria-hidden="true">
+            {/* Bird — decorative, above the headline */}
+            <div className="w-[180px] h-[135px] relative" aria-hidden="true">
               <Image
                 src="/images/bird1.png"
                 alt=""
@@ -42,7 +42,7 @@ export function HeroSection({
             </h1>
 
             {nameplate && (
-              <p className="text-small text-text/60 tracking-wide">
+              <p className="text-body text-text/70 whitespace-nowrap">
                 {nameplate}
               </p>
             )}
