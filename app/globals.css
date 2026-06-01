@@ -30,3 +30,15 @@
     outline: none;
   }
 }
+
+/* ─────────────────────────────────────────────
+   Force UserWay accessibility widget to bottom-left.
+   UserWay ignores data-position and dashboard settings on this stack,
+   so we override its inline styles via CSS.
+   ───────────────────────────────────────────── */
+#userwayAccessibilityIcon {
+  bottom: 24px !important;
+  left: 24px !important;
+  top: auto !important;
+  right: auto !important;
+}
