@@ -132,10 +132,11 @@ export default async function LocaleLayout({
         />
       )}
 
-      {/* UserWay accessibility widget */}
+      {/* UserWay accessibility widget — bottom-left */}
       <Script
         src="https://cdn.userway.org/widget.js"
         data-account="2yHirPCDdP"
+        data-position="bottom-left"
         strategy="afterInteractive"
       />
 

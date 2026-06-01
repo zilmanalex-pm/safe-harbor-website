@@ -19,8 +19,8 @@ export function WhatsAppButton({ number, ariaLabel }: WhatsAppButtonProps) {
       rel="noopener noreferrer"
       aria-label={ariaLabel}
       className={[
-        // Fixed position — bottom corner, inset 24px
-        'fixed bottom-lg ltr:right-lg rtl:left-lg z-50',
+        // Fixed position — always bottom-right
+        'fixed bottom-lg right-lg z-50',
         // Size and shape
         'w-14 h-14 rounded-full',
         // WhatsApp green
