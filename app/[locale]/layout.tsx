@@ -136,7 +136,7 @@ export default async function LocaleLayout({
       <Script
         src="https://cdn.userway.org/widget.js"
         data-account="2yHirPCDdP"
-        data-position="bottom-left"
+        data-position="bottom_left"
         strategy="afterInteractive"
       />
 
