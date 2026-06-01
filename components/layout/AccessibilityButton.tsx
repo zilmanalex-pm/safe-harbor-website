@@ -22,25 +22,23 @@ export function AccessibilityButton() {
       className={[
         'fixed bottom-6 left-6 z-[200]',
         'w-12 h-12 rounded-full',
-        'bg-primary text-white',
+        'bg-[#0057B8] text-white',
         'flex items-center justify-center',
         'shadow-lg',
         'hover:opacity-90 transition-opacity duration-200',
-        'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+        'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0057B8]',
       ].join(' ')}
     >
-      {/* Standard universal accessibility symbol */}
+      {/* ISA — International Symbol of Access (wheelchair) */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
+        viewBox="0 0 100 100"
         fill="white"
-        className="w-6 h-6"
+        className="w-7 h-7"
         aria-hidden="true"
       >
-        {/* Head */}
-        <circle cx="12" cy="4" r="2" />
-        {/* Body, arms, legs */}
-        <path d="M19 10.5a1 1 0 0 0-1-1h-4.28l-.53-1.5H15a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2h1.18l1.07 3H9a1 1 0 0 0-.95.68L6.1 18.2a1 1 0 1 0 1.9.64L9.7 14h4.6l1.7 4.84a1 1 0 1 0 1.9-.64L16 12H18a1 1 0 0 0 1-1.5z" />
+        <circle cx="60" cy="12" r="10" />
+        <path d="M82 72 L70 45 L48 45 L44 30 L28 30 L28 40 L36 40 L42 62 L62 62 L68 80 A18 18 0 1 1 34 80 A18 18 0 0 1 58 65 L54 52 A28 28 0 1 0 88 80 Z" />
       </svg>
     </button>
   )
