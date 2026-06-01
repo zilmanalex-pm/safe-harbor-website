@@ -132,6 +132,13 @@ export default async function LocaleLayout({
         />
       )}
 
+      {/* UserWay accessibility widget */}
+      <Script
+        src="https://cdn.userway.org/widget.js"
+        data-account="2yHirPCDdP"
+        strategy="afterInteractive"
+      />
+
       <NextIntlClientProvider messages={messages}>
         <Header
           siteName={tShared('siteName')}
