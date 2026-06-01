@@ -32,12 +32,16 @@
 }
 
 /* ─────────────────────────────────────────────
-   Move UserWay's button off-screen — we render our own
-   button and programmatically click this one to open the panel.
+   Collapse UserWay's own button to nothing — we render our own.
+   Zero size + off-screen so no shadow or halo leaks through.
    ───────────────────────────────────────────── */
 #userwayAccessibilityIcon,
 [id*="userway" i] {
   position: fixed !important;
   left: -9999px !important;
   top: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
 }
