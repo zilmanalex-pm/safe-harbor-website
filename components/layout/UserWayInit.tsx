@@ -5,10 +5,11 @@
 import Script from 'next/script'
 
 export function UserWayInit({ locale }: { locale: string }) {
-  const lang = locale === 'he' ? 'he' : 'ru'
+  // UserWay uses 'iw' for Hebrew (old ISO 639-1 code)
+  const lang = locale === 'he' ? 'iw' : 'ru'
 
   return (
-    <Script id="userway-widget" strategy="afterInteractive">{`
+    <Script id={`userway-widget-${locale}`} strategy="afterInteractive">{`
       (function(d) {
         var s = d.createElement('script');
         s.src = 'https://cdn.userway.org/widget.js';
