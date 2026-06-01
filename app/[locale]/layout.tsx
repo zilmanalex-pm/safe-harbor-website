@@ -132,13 +132,17 @@ export default async function LocaleLayout({
         />
       )}
 
-      {/* UserWay accessibility widget — bottom-left */}
-      <Script
-        src="https://cdn.userway.org/widget.js"
-        data-account="2yHirPCDdP"
-        data-position="bottom_left"
-        strategy="afterInteractive"
-      />
+      {/* UserWay accessibility widget — injected manually so data-position is respected */}
+      <Script id="userway-widget" strategy="afterInteractive">{`
+        (function(d) {
+          var s = d.createElement('script');
+          s.src = 'https://cdn.userway.org/widget.js';
+          s.setAttribute('data-account', '2yHirPCDdP');
+          s.setAttribute('data-position', 'bottom_left');
+          s.async = true;
+          (d.body || d.head).appendChild(s);
+        })(document);
+      `}</Script>
 
       <NextIntlClientProvider messages={messages}>
         <Header
