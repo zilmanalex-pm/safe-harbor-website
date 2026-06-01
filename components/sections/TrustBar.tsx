@@ -42,7 +42,7 @@ export function TrustBar({ items }: TrustBarProps) {
                 )}
               >
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
-                <span className="text-h3 font-semibold text-primary leading-none whitespace-nowrap" dir="auto">
+                <span className="text-h3 font-semibold text-primary leading-tight text-center" dir="auto">
                   {item.value}
                 </span>
                 <span className="text-small text-text/80 whitespace-pre-line text-center">
