@@ -39,7 +39,28 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = 'he'
   }
 
-  // Always load from local JSON (Sanity wired up in a later sprint)
+  try {
+    const [shared, home, about, services, faq, contact] = await Promise.all([
+      sanityClient.fetch(sharedQuery,   { locale }),
+      sanityClient.fetch(homeQuery,     { locale }),
+      sanityClient.fetch(aboutQuery,    { locale }),
+      sanityClient.fetch(servicesQuery, { locale }),
+      sanityClient.fetch(faqQuery,      { locale }),
+      sanityClient.fetch(contactQuery,  { locale }),
+    ])
+
+    // If Sanity returned data for all documents, use it
+    if (shared && home && about && services && faq && contact) {
+      return {
+        locale,
+        messages: { shared, home, about, services, faq, contact },
+      }
+    }
+  } catch (err) {
+    console.warn('[i18n] Sanity fetch failed, falling back to JSON:', err)
+  }
+
+  // Fallback: local JSON files (used during local dev or if Sanity is unreachable)
   return await fallbackToJson(locale)
 })
 

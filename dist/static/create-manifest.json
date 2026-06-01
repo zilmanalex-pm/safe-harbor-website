@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "createdAt": "2026-05-31T13:54:39.356Z",
+  "createdAt": "2026-05-31T13:57:35.206Z",
   "workspaces": [
     {
       "name": "safe-harbor",
@@ -12,7 +12,7 @@
       "mediaLibrary": {
         "enabled": false
       },
-      "schema": "708c7c90.create-schema.json",
+      "schema": "d60599f3.create-schema.json",
       "tools": "e523f8b0.create-tools.json"
     }
   ]
