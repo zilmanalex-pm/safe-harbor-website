@@ -17,6 +17,7 @@ import { LocaleSetter } from '@/components/LocaleSetter'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
+import { AccessibilityButton } from '@/components/layout/AccessibilityButton'
 
 import '@/app/globals.css'
 
@@ -182,6 +183,7 @@ export default async function LocaleLayout({
           number={tShared('whatsapp')}
           ariaLabel="צרו קשר בוואטסאפ / Написать в WhatsApp"
         />
+        <AccessibilityButton />
       </NextIntlClientProvider>
     </>
   )
