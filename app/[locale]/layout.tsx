@@ -132,15 +132,32 @@ export default async function LocaleLayout({
         />
       )}
 
-      {/* UserWay accessibility widget — injected manually so data-position is respected */}
+      {/* UserWay accessibility widget — bottom-left forced via MutationObserver */}
       <Script id="userway-widget" strategy="afterInteractive">{`
         (function(d) {
+          // Load the widget
           var s = d.createElement('script');
           s.src = 'https://cdn.userway.org/widget.js';
           s.setAttribute('data-account', '2yHirPCDdP');
           s.setAttribute('data-position', 'bottom_left');
           s.async = true;
-          (d.body || d.head).appendChild(s);
+          d.head.appendChild(s);
+
+          // Watch for the widget element and force bottom-left position
+          function forcePosition() {
+            var el = d.getElementById('userwayAccessibilityIcon')
+              || d.querySelector('[id*="userway" i]')
+              || d.querySelector('[class*="userway" i]');
+            if (el) {
+              el.style.setProperty('bottom', '24px', 'important');
+              el.style.setProperty('left',   '24px', 'important');
+              el.style.setProperty('top',    'auto', 'important');
+              el.style.setProperty('right',  'auto', 'important');
+            }
+          }
+
+          var observer = new MutationObserver(forcePosition);
+          observer.observe(d.body, { childList: true, subtree: true });
         })(document);
       `}</Script>
 
