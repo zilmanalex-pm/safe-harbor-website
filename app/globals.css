@@ -32,10 +32,12 @@
 }
 
 /* ─────────────────────────────────────────────
-   Hide UserWay's own button — we render our own
-   button that calls UserWay's panel API instead.
+   Move UserWay's button off-screen — we render our own
+   button and programmatically click this one to open the panel.
    ───────────────────────────────────────────── */
 #userwayAccessibilityIcon,
 [id*="userway" i] {
-  display: none !important;
+  position: fixed !important;
+  left: -9999px !important;
+  top: -9999px !important;
 }
