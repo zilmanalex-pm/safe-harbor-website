@@ -60,7 +60,7 @@ export function AboutSection({
             {educationItems.length > 0 && (
               <div className="mt-md flex flex-col gap-xs">
                 {educationHeadline && (
-                  <h3 className="text-[18px] font-semibold text-primary mb-xs">{educationHeadline}</h3>
+                  <h3 className="text-[17px] font-semibold text-text/60 uppercase tracking-wide mb-xs">{educationHeadline}</h3>
                 )}
                 <ul className="flex flex-col gap-xs list-none ps-0">
                   {educationItems.map((item, i) => (
