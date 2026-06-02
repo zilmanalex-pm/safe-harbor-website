@@ -29,6 +29,7 @@ export default async function AboutPage({
         openingHeadline={t('opening.headline')} 
         opening={t('opening.body')}
         approachHeadline={t('approach.headline')}
+        approachQuote={(() => { try { return t('approach.quote') } catch { return undefined } })()}
         approach={t('approach.body')}
         backgroundHeadline={t('background.headline')}
         background={t('background.body')}

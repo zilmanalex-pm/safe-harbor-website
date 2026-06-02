@@ -11,6 +11,7 @@ interface AboutSectionProps {
   openingHeadline: string
   opening: string
   approachHeadline: string
+  approachQuote?: string
   approach: string
   backgroundHeadline: string
   background: string
@@ -23,6 +24,7 @@ export function AboutSection({
   openingHeadline,
   opening,
   approachHeadline,
+  approachQuote,
   approach,
   backgroundHeadline,
   background,
@@ -44,6 +46,13 @@ export function AboutSection({
           </div>
           <div className="flex-1 flex flex-col gap-sm">
             <h2 className="text-[20px] font-semibold text-primary">{approachHeadline}</h2>
+            {approachQuote && (
+              <blockquote className="border-s-[3px] border-primary/40 ps-md my-sm">
+                <p className="text-[1.25rem] font-semibold italic text-text/90 leading-[1.7]">
+                  {approachQuote}
+                </p>
+              </blockquote>
+            )}
             <p className="text-[18px] text-text/80 leading-[1.85]">{approach}</p>
           </div>
         </div>
