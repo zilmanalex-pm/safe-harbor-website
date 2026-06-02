@@ -75,7 +75,7 @@ export function AboutSection({
           </div>
 
           {/* Tree painting — center column, desktop only */}
-          <div className="hidden md:block relative w-[22%] shrink-0 rounded-card overflow-hidden bg-neutral/20">
+          <div className="hidden md:block relative w-[32%] shrink-0 rounded-card overflow-hidden bg-neutral/20">
             <Image
               src="/images/tree1.png"
               alt={photoAlt}
