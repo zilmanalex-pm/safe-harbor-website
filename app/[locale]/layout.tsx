@@ -136,6 +136,21 @@ export default async function LocaleLayout({
 
       <UserWayInit locale={locale} />
 
+      {/* ── UNDER CONSTRUCTION BANNER — remove once site updates are complete ── */}
+      <div style={{
+        background: '#2d4a3e',
+        color: '#f5f0e8',
+        textAlign: 'center',
+        padding: '10px 16px',
+        fontSize: '14px',
+        lineHeight: '1.5',
+      }}>
+        {locale === 'he'
+          ? 'האתר עובר עדכונים ויחזור בקרוב במלואו'
+          : 'Сайт обновляется — скоро вернёмся в полном объёме'}
+      </div>
+      {/* ── END BANNER ── */}
+
       <NextIntlClientProvider messages={messages}>
         <Header
           siteName={tShared('siteName')}
