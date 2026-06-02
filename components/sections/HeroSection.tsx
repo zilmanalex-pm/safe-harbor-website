@@ -1,6 +1,5 @@
 // components/sections/HeroSection.tsx — Safe Harbor
-// Hero: small bird watercolor above headline + Sofia's photo column.
-// No background image — bird is a compact decorative element above the text.
+// Hero: tree2 watercolor filling the text-column background + Sofia's photo column.
 
 import Image from 'next/image'
 
@@ -23,29 +22,32 @@ export function HeroSection({
       <div className="w-full max-w-[1200px] mx-auto px-lg">
         <div className="flex flex-col md:flex-row gap-2xl items-center">
 
-          {/* Text column */}
-          <div className="flex-1 flex flex-col gap-md order-2 md:order-1 text-start">
+          {/* Text column — tree2 as background watercolor */}
+          <div className="flex-1 flex flex-col gap-md order-2 md:order-1 text-start relative min-h-[340px]">
 
-            {/* Bird — decorative, above the headline */}
-            <div className="w-[180px] h-[135px] relative" aria-hidden="true">
+            {/* Tree2 — fills the text column background with color */}
+            <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
               <Image
-                src="/images/bird1.png"
+                src="/images/tree2.png"
                 alt=""
                 fill
-                className="object-contain object-start"
+                className="object-cover object-center"
                 priority
               />
             </div>
 
-            <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15]">
-              {headline}
-            </h1>
+            {/* Text sits on top of the tree */}
+            <div className="relative flex flex-col gap-md">
+              <h1 className="text-[28px] md:text-[36px] font-semibold text-text leading-[1.2]">
+                {headline}
+              </h1>
 
-            {nameplate && (
-              <p className="text-body text-text/70 whitespace-nowrap">
-                {nameplate}
-              </p>
-            )}
+              {nameplate && (
+                <p className="text-[18px] md:text-[20px] font-semibold text-primary leading-snug">
+                  {nameplate}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Photo column */}
