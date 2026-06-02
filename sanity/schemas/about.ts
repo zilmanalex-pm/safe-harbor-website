@@ -55,9 +55,10 @@ export const aboutSchema = defineType({
       title: 'Background & training section',
       type: 'object',
       fields: [
-        defineField({ name: 'headline',  type: 'string', title: 'Headline' }),
-        defineField({ name: 'body',      type: 'text',   title: 'Biographical text', rows: 8 }),
-        defineField({ name: 'education', type: 'text',   title: 'Education credentials (one per line)', rows: 5 }),
+        defineField({ name: 'headline',          type: 'string', title: 'Headline' }),
+        defineField({ name: 'body',              type: 'text',   title: 'Biographical text', rows: 8 }),
+        defineField({ name: 'educationHeadline', type: 'string', title: 'Education section headline' }),
+        defineField({ name: 'education',         type: 'text',   title: 'Education credentials (one per line)', rows: 5 }),
       ],
     }),
     defineField({

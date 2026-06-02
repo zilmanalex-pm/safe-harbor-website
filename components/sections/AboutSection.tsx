@@ -1,8 +1,5 @@
 // components/sections/AboutSection.tsx — Safe Harbor
-// Three-row about page layout:
-// ROW 1: Background (left) | Approach with therapies (right)
-// ROW 2: Tree painting (right, 35%) | Opening intro text (left, 65%)
-// CLOSING: green sign-off line
+// Single row: Background+Education | Approach+Therapies | Tree painting (three equal columns)
 
 import Image from 'next/image'
 
@@ -13,14 +10,15 @@ interface Therapy {
 
 interface AboutSectionProps {
   h1: string
-  openingHeadline: string
-  opening: string
+  openingHeadline?: string
+  opening?: string
   approachHeadline: string
   approachQuote?: string
   approach: string
   therapies?: Therapy[]
   backgroundHeadline: string
   background: string
+  educationHeadline?: string
   education?: string
   closing: string
   photoAlt: string
@@ -28,14 +26,13 @@ interface AboutSectionProps {
 
 export function AboutSection({
   h1,
-  openingHeadline,
-  opening,
   approachHeadline,
   approachQuote,
   approach,
   therapies,
   backgroundHeadline,
   background,
+  educationHeadline,
   education,
   closing,
   photoAlt,
@@ -51,8 +48,8 @@ export function AboutSection({
         {/* h1 hidden visually — kept for SEO */}
         <h1 className="sr-only">{h1}</h1>
 
-        {/* ROW 1: Background (left) | Approach (right in RTL) */}
-        <div className="flex flex-col md:flex-row gap-xl">
+        {/* Three columns: Background | Approach | Tree — all stretch to same height */}
+        <div className="flex flex-col md:flex-row gap-xl items-stretch">
 
           {/* Background + education column */}
           <div className="flex-1 flex flex-col gap-sm">
@@ -60,14 +57,19 @@ export function AboutSection({
             <p className="text-[18px] text-text/80 leading-[1.85] whitespace-pre-line">{background}</p>
 
             {educationItems.length > 0 && (
-              <ul className="mt-sm flex flex-col gap-xs list-none ps-0">
-                {educationItems.map((item, i) => (
-                  <li key={i} className="text-[17px] text-text/75 leading-[1.7] flex gap-sm items-baseline">
-                    <span className="text-primary shrink-0" aria-hidden="true">✦</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-md flex flex-col gap-xs">
+                {educationHeadline && (
+                  <h3 className="text-[18px] font-semibold text-primary mb-xs">{educationHeadline}</h3>
+                )}
+                <ul className="flex flex-col gap-xs list-none ps-0">
+                  {educationItems.map((item, i) => (
+                    <li key={i} className="text-[17px] text-text/75 leading-[1.7] flex gap-sm items-baseline">
+                      <span className="text-primary shrink-0" aria-hidden="true">✦</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
 
@@ -97,15 +99,8 @@ export function AboutSection({
             )}
           </div>
 
-        </div>
-
-        {/* ROW 2: Tree painting (right, 35%) | Opening intro text (left, 65%) */}
-        <div className="flex flex-col md:flex-row gap-xl items-stretch">
-          <div className="flex-1 flex flex-col justify-center gap-sm">
-            <h2 className="text-[20px] font-semibold text-primary">{openingHeadline}</h2>
-            <p className="text-[18px] text-text/80 leading-[1.85]">{opening}</p>
-          </div>
-          <div className="relative w-full md:w-[35%] shrink-0 min-h-[340px] rounded-card overflow-hidden bg-neutral/30">
+          {/* Tree painting column — stretches to full height of sibling columns */}
+          <div className="relative flex-1 min-h-[480px] rounded-card overflow-hidden bg-neutral/30 hidden md:block">
             <Image
               src="/images/tree1.png"
               alt={photoAlt}
@@ -114,6 +109,7 @@ export function AboutSection({
               style={{ mixBlendMode: 'multiply' }}
             />
           </div>
+
         </div>
 
         {/* Closing sign-off */}

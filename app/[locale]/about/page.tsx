@@ -34,6 +34,7 @@ export default async function AboutPage({
         therapies={(() => { try { return t.raw('approach.therapies') as Array<{name: string; body: string}> } catch { return undefined } })()}
         backgroundHeadline={t('background.headline')}
         background={t('background.body')}
+        educationHeadline={(() => { try { return t('background.educationHeadline') } catch { return undefined } })()}
         education={(() => { try { return t('background.education') } catch { return undefined } })()}
         closing={t('closing.body')}
         photoAlt={t('photoAlt')}
