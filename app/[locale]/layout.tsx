@@ -19,6 +19,7 @@ import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 import { AccessibilityButton } from '@/components/layout/AccessibilityButton'
 import { UserWayInit } from '@/components/layout/UserWayInit'
+import { UnderConstruction } from '@/components/UnderConstruction'
 
 import '@/app/globals.css'
 
@@ -136,58 +137,8 @@ export default async function LocaleLayout({
 
       <UserWayInit locale={locale} />
 
-      {/* ── UNDER CONSTRUCTION — remove this block once site updates are complete ── */}
-      <div style={{
-        minHeight: '100vh',
-        background: '#2d4a3e',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '40px 24px',
-        textAlign: 'center',
-      }}>
-        <div style={{ fontSize: '64px', marginBottom: '24px' }}>🚧</div>
-        <h1 style={{
-          color: '#f5f0e8',
-          fontSize: 'clamp(24px, 5vw, 42px)',
-          fontWeight: '700',
-          lineHeight: '1.4',
-          marginBottom: '16px',
-          maxWidth: '600px',
-        }}>
-          {locale === 'he'
-            ? 'האתר עובר עדכונים'
-            : 'Сайт обновляется'}
-        </h1>
-        <p style={{
-          color: '#c8d8c4',
-          fontSize: 'clamp(16px, 3vw, 22px)',
-          lineHeight: '1.6',
-          maxWidth: '500px',
-        }}>
-          {locale === 'he'
-            ? 'נחזור בקרוב במלואו. תודה על הסבלנות.'
-            : 'Скоро вернёмся в полном объёме. Спасибо за терпение.'}
-        </p>
-        <a
-          href="https://wa.me/972523777865"
-          style={{
-            marginTop: '40px',
-            display: 'inline-block',
-            background: '#25d366',
-            color: '#fff',
-            padding: '14px 32px',
-            borderRadius: '8px',
-            fontSize: '18px',
-            fontWeight: '600',
-            textDecoration: 'none',
-          }}
-        >
-          {locale === 'he' ? 'צרו קשר בוואטסאפ' : 'Написать в WhatsApp'}
-        </a>
-      </div>
-      {/* ── END UNDER CONSTRUCTION ── */}
+      {/* ── UNDER CONSTRUCTION — remove <UnderConstruction> once site updates are complete ── */}
+      <UnderConstruction locale={locale} />
 
       <NextIntlClientProvider messages={messages}>
         <Header
@@ -197,7 +148,7 @@ export default async function LocaleLayout({
           ctaHref="https://wa.me/972523777865"
           locale={locale as Locale}
         />
-        <main style={{ display: 'none' }}>
+        <main>
           {children}
         </main>
         <Footer
