@@ -23,6 +23,7 @@ export const aboutSchema = defineType({
       title: 'Opening paragraph (personal story)',
       type: 'object',
       fields: [
+        defineField({ name: 'headline', type: 'string', title: 'Headline' }),
         defineField({ name: 'body', type: 'text', title: 'Text', rows: 5 }),
       ],
     }),
@@ -32,16 +33,31 @@ export const aboutSchema = defineType({
       type: 'object',
       fields: [
         defineField({ name: 'headline', type: 'string', title: 'Headline' }),
-        defineField({ name: 'body',     type: 'text',   title: 'Text', rows: 5 }),
+        defineField({ name: 'quote',    type: 'text',   title: 'Opening quote', rows: 3 }),
+        defineField({ name: 'body',     type: 'text',   title: 'Intro text', rows: 5 }),
+        defineField({
+          name: 'therapies',
+          title: 'Therapy modalities',
+          type: 'array',
+          of: [defineField({
+            name: 'therapy',
+            type: 'object',
+            fields: [
+              defineField({ name: 'name', type: 'string', title: 'Therapy name (bold)' }),
+              defineField({ name: 'body', type: 'text',   title: 'Description', rows: 3 }),
+            ],
+          })],
+        }),
       ],
     }),
     defineField({
       name: 'background',
-      title: 'Education & background section',
+      title: 'Background & training section',
       type: 'object',
       fields: [
-        defineField({ name: 'headline', type: 'string', title: 'Headline' }),
-        defineField({ name: 'body',     type: 'text',   title: 'Text', rows: 4 }),
+        defineField({ name: 'headline',  type: 'string', title: 'Headline' }),
+        defineField({ name: 'body',      type: 'text',   title: 'Biographical text', rows: 8 }),
+        defineField({ name: 'education', type: 'text',   title: 'Education credentials (one per line)', rows: 5 }),
       ],
     }),
     defineField({

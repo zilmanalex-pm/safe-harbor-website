@@ -26,13 +26,15 @@ export default async function AboutPage({
       <PersonSchema />
       <AboutSection
         h1={t('h1')}
-        openingHeadline={t('opening.headline')} 
+        openingHeadline={t('opening.headline')}
         opening={t('opening.body')}
         approachHeadline={t('approach.headline')}
         approachQuote={(() => { try { return t('approach.quote') } catch { return undefined } })()}
         approach={t('approach.body')}
+        therapies={(() => { try { return t.raw('approach.therapies') as Array<{name: string; body: string}> } catch { return undefined } })()}
         backgroundHeadline={t('background.headline')}
         background={t('background.body')}
+        education={(() => { try { return t('background.education') } catch { return undefined } })()}
         closing={t('closing.body')}
         photoAlt={t('photoAlt')}
       />

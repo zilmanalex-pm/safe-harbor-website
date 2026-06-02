@@ -89,7 +89,7 @@ async function seed() {
         meta:       about.meta,
         h1:         about.h1,
         opening:    about.opening,
-        approach:   about.approach,
+        approach:   withKeys(about.approach),
         background: about.background,
         closing:    about.closing,
         photoAlt:   about.photoAlt,
