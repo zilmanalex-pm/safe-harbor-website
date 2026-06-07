@@ -1,6 +1,6 @@
 // components/sections/AboutSection.tsx — Safe Harbor
-// Desktop: three columns — Background | Tree painting | Approach
-// Mobile: two text blocks stacked, tree hidden
+// Desktop: three columns — Bird | Background | Approach (bird is first = right side in RTL)
+// Mobile: two text blocks stacked, bird hidden
 
 import Image from 'next/image'
 
@@ -49,8 +49,18 @@ export function AboutSection({
         {/* h1 hidden visually — kept for SEO */}
         <h1 className="sr-only">{h1}</h1>
 
-        {/* Desktop: Background | Tree | Approach — Mobile: stacked text only */}
+        {/* Desktop: Bird | Background | Approach — Mobile: stacked text only */}
         <div className="flex flex-col md:flex-row gap-xl md:items-stretch">
+
+          {/* Bird — first column (right in RTL), desktop only */}
+          <div className="hidden md:flex relative w-[32%] shrink-0 rounded-card overflow-hidden bg-neutral/20">
+            <Image
+              src="/images/bird1.png"
+              alt={photoAlt}
+              fill
+              className="object-contain object-center p-4"
+            />
+          </div>
 
           {/* Background + education */}
           <div className="flex-1 flex flex-col gap-sm">
@@ -72,16 +82,6 @@ export function AboutSection({
                 </ul>
               </div>
             )}
-          </div>
-
-          {/* Tree painting — center column, desktop only */}
-          <div className="hidden md:block relative w-[32%] shrink-0 rounded-card overflow-hidden bg-neutral/20">
-            <Image
-              src="/images/bird1.png"
-              alt={photoAlt}
-              fill
-              className="object-contain object-center p-4"
-            />
           </div>
 
           {/* Approach + therapies */}
