@@ -21,7 +21,7 @@ export default async function ServicesPage({
 }) {
   const t = await getTranslations({ locale, namespace: 'services' })
 
-  const services = [0, 1, 2, 3].map((i) => ({
+  const services = [0, 1, 2].map((i) => ({
     slug: t(`services.${i}.slug`),
     name: t(`services.${i}.name`),
     description: t(`services.${i}.description`),
