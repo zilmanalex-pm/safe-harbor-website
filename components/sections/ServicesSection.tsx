@@ -51,7 +51,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                     <img
                       src={service.image}
                       alt={service.name}
-                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: service.image.endsWith('.png') ? 'contain' : 'cover', padding: service.image.endsWith('.png') ? '1.5rem' : '0' }}
                     />
                   </div>
                 </>
@@ -63,7 +63,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
                     <img
                       src={service.image}
                       alt={service.name}
-                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: service.image.endsWith('.png') ? 'contain' : 'cover', padding: service.image.endsWith('.png') ? '1.5rem' : '0' }}
                     />
                   </div>
                   <div className="text-col flex-1 flex flex-col justify-center px-xl py-xl order-1 md:order-none">
