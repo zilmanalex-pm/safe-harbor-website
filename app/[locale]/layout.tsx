@@ -85,13 +85,11 @@ export default async function LocaleLayout({
     { href: `/${locale}`, label: t('home') },
     { href: `/${locale}/about`, label: t('about') },
     { href: `/${locale}/services`, label: t('services') },
-    { href: `/${locale}/faq`, label: t('faq') },
   ]
 
   const footerLinks = [
     { href: `/${locale}/about`, label: t('about') },
     { href: `/${locale}/services`, label: t('services') },
-    { href: `/${locale}/faq`, label: t('faq') },
     { href: `/${locale}/contact`, label: t('contact') },
   ]
 
