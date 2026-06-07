@@ -83,9 +83,9 @@ export function AboutSection({
           <div className="relative w-full md:w-[38%] shrink-0 min-h-[300px] order-2 md:order-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ship1-edited.jpg"
+              src="/images/tree1.png"
               alt=""
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: '1rem' }}
             />
           </div>
           <div className="flex-1 flex flex-col justify-center px-xl py-xl gap-sm order-1 md:order-none">
