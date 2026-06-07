@@ -1,36 +1,11 @@
 // i18n.ts — Safe Harbor
-// Configures next-intl message loading.
-// Fetches all content from Sanity and merges it into a single messages object.
-// Each document type becomes a namespace:
-//   home.hero.headline, about.opening.body, shared.nav.cta, etc.
-//
-// Documents in Sanity have deterministic IDs: homePage-he, aboutPage-ru, etc.
-// Run `npm run seed` once to populate Sanity with the initial content.
+// Loads content directly from local JSON files.
+// JSON files are the source of truth — update them and push to git.
+// Vercel rebuilds automatically on every push.
 
 import { getRequestConfig } from 'next-intl/server'
-import { sanityClient } from './lib/sanity'
 
 const locales = ['he', 'ru']
-
-// GROQ projections — strip Sanity metadata, return plain objects
-const homeQuery = `*[_type == "homePage" && locale == $locale][0]{
-  meta, hero, intro, trust, cta
-}`
-const aboutQuery = `*[_type == "aboutPage" && locale == $locale][0]{
-  meta, h1, opening, approach, background, closing, photoAlt
-}`
-const servicesQuery = `*[_type == "servicesPage" && locale == $locale][0]{
-  meta, headline, subheadline, services[]{slug, name, description, image}
-}`
-const faqQuery = `*[_type == "faqPage" && locale == $locale][0]{
-  meta, headline, categories[]{name, questions[]{question, answer}}
-}`
-const contactQuery = `*[_type == "contactPage" && locale == $locale][0]{
-  meta, h1, intro, responseTime, form
-}`
-const sharedQuery = `*[_type == "sharedContent" && locale == $locale][0]{
-  siteName, whatsapp, nav, footer
-}`
 
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale
@@ -39,33 +14,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = 'he'
   }
 
-  try {
-    const [shared, home, about, services, faq, contact] = await Promise.all([
-      sanityClient.fetch(sharedQuery,   { locale }),
-      sanityClient.fetch(homeQuery,     { locale }),
-      sanityClient.fetch(aboutQuery,    { locale }),
-      sanityClient.fetch(servicesQuery, { locale }),
-      sanityClient.fetch(faqQuery,      { locale }),
-      sanityClient.fetch(contactQuery,  { locale }),
-    ])
-
-    // If Sanity returned data for all documents, use it
-    if (shared && home && about && services && faq && contact) {
-      return {
-        locale,
-        messages: { shared, home, about, services, faq, contact },
-      }
-    }
-  } catch (err) {
-    console.warn('[i18n] Sanity fetch failed, falling back to JSON:', err)
-  }
-
-  // Fallback: local JSON files (used during local dev or if Sanity is unreachable)
-  return await fallbackToJson(locale)
-})
-
-// Fallback: local JSON files
-async function fallbackToJson(locale: string) {
   const [shared, home, about, services, faq, contact] = await Promise.all([
     import(`./content/${locale}/shared.json`),
     import(`./content/${locale}/home.json`),
@@ -86,4 +34,4 @@ async function fallbackToJson(locale: string) {
       contact:  (contact  as any).default ?? contact,
     },
   }
-}
+})
