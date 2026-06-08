@@ -68,7 +68,7 @@ export function AboutSection({
               </div>
             )}
           </div>
-          <div className="relative w-full md:w-[38%] shrink-0 min-h-[300px]">
+          <div className="relative w-full md:w-[38%] shrink-0 min-h-[300px] bg-neutral/10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/bird1.png"
@@ -80,12 +80,12 @@ export function AboutSection({
 
         {/* CARD 2: Approach — odd index → image first (right in RTL), text second (left in RTL) */}
         <div className="flex flex-col md:flex-row items-stretch rounded-card overflow-hidden border border-neutral/40">
-          <div className="w-full md:w-[38%] shrink-0 min-h-[300px] order-2 md:order-none overflow-hidden">
+          <div className="relative w-full md:w-[38%] shrink-0 min-h-[300px] order-2 md:order-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/ship1-edited.jpg"
               alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </div>
           <div className="flex-1 flex flex-col justify-center px-xl py-xl gap-sm order-1 md:order-none">
