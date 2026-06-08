@@ -46,9 +46,11 @@ export function HeroSection({
             )}
 
             {/* Headline/saying — smaller, black, below nameplate */}
-            <h1 className="text-[20px] md:text-[26px] font-medium text-text leading-[1.4]">
-              {headline}
-            </h1>
+            {headline && (
+              <h1 className="text-[20px] md:text-[26px] font-medium text-text leading-[1.4]">
+                {headline}
+              </h1>
+            )}
 
           </div>
 

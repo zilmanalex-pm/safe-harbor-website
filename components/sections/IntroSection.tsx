@@ -7,6 +7,7 @@ interface IntroSectionProps {
 }
 
 export function IntroSection({ body }: IntroSectionProps) {
+  if (!body) return null
   return (
     <section className="bg-background py-2xl">
       <div className="w-full max-w-[720px] mx-auto px-lg">
