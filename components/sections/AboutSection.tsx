@@ -21,6 +21,7 @@ interface AboutSectionProps {
   education?: string
   closing: string
   photoAlt: string
+  variant?: 'background' | 'approach' | 'both'
 }
 
 export function AboutSection({
@@ -34,6 +35,7 @@ export function AboutSection({
   educationHeadline,
   education,
   closing,
+  variant = 'both',
 }: AboutSectionProps) {
   const educationItems = education
     ? education.split('\n').filter(Boolean)
@@ -46,7 +48,8 @@ export function AboutSection({
         {/* h1 hidden visually — kept for SEO */}
         <h1 className="sr-only">{h1}</h1>
 
-        {/* CARD 1: Background — even index → text first (right in RTL), image second (left in RTL) */}
+        {/* CARD 1: Background */}
+        {(variant === 'both' || variant === 'background') && (
         <div className="flex flex-col md:flex-row items-stretch rounded-card overflow-hidden border border-neutral/40">
           <div className="flex-1 flex flex-col justify-center px-xl py-xl gap-sm">
             <h2 className="text-[20px] font-semibold text-primary">{backgroundHeadline}</h2>
@@ -77,8 +80,10 @@ export function AboutSection({
             />
           </div>
         </div>
+        )}
 
-        {/* CARD 2: Approach — odd index → image first (right in RTL), text second (left in RTL) */}
+        {/* CARD 2: Approach */}
+        {(variant === 'both' || variant === 'approach') && (
         <div className="flex flex-col md:flex-row items-stretch rounded-card overflow-hidden border border-neutral/40">
           <div className="relative w-full md:w-[35%] shrink-0 min-h-[300px] order-2 md:order-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -113,6 +118,7 @@ export function AboutSection({
             )}
           </div>
         </div>
+        )}
 
         {/* Closing sign-off */}
         {closing ? (

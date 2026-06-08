@@ -84,11 +84,13 @@ export default async function LocaleLayout({
   const navLinks = [
     { href: `/${locale}`, label: t('home') },
     { href: `/${locale}/about`, label: t('about') },
+    { href: `/${locale}/approach`, label: t('approach') },
     { href: `/${locale}/services`, label: t('services') },
   ]
 
   const footerLinks = [
     { href: `/${locale}/about`, label: t('about') },
+    { href: `/${locale}/approach`, label: t('approach') },
     { href: `/${locale}/services`, label: t('services') },
   ]
 

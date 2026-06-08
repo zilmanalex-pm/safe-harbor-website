@@ -38,6 +38,7 @@ export default async function AboutPage({
         education={(() => { try { return t('background.education') } catch { return undefined } })()}
         closing={t('closing.body')}
         photoAlt={t('photoAlt')}
+        variant="background"
       />
     </>
   )
