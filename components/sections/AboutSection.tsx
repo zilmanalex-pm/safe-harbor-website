@@ -83,7 +83,7 @@ export function AboutSection({
           <div className="relative w-full md:w-[38%] shrink-0 min-h-[300px] order-2 md:order-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ship1-edited.jpg"
+              src="/images/ship1.jpg"
               alt=""
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
             />
