@@ -58,7 +58,7 @@ export function HeroSection({
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
             <div className="relative w-full max-w-[520px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
               <Image
-                src="/images/Sofia.jpeg"
+                src="/images/Sonya 3.png"
                 alt={photoAlt}
                 fill
                 className="object-cover object-top"
