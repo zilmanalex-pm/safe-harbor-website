@@ -27,9 +27,11 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
           <h1 className="text-4xl md:text-h1 font-semibold text-text leading-[1.15] mb-md">
             {headline}
           </h1>
-          <p className="text-body text-text/70 leading-relaxed whitespace-pre-line">
-            {subheadline}
-          </p>
+          {subheadline && (
+            <p className="text-body text-text/70 leading-relaxed whitespace-pre-line">
+              {subheadline}
+            </p>
+          )}
         </div>
 
         {/* Zig-zag rows */}

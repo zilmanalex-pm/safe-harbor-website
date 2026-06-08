@@ -29,10 +29,10 @@ export function TrustBar({ items }: TrustBarProps) {
             return (
               <li key={i} className="flex flex-col items-center text-center gap-xs">
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
-                <span className="text-h3 font-semibold text-primary leading-tight text-center" dir="auto">
+                <span className="text-[22px] font-semibold text-primary leading-tight text-center" dir="auto">
                   {item.value}
                 </span>
-                <span className="text-small text-text/80 whitespace-pre-line text-center">
+                <span className="text-[15px] text-text/80 whitespace-pre-line text-center">
                   {item.label}
                 </span>
               </li>
@@ -66,14 +66,14 @@ export function TrustBar({ items }: TrustBarProps) {
 
                 {/* Row 2: bold value */}
                 <div className="flex justify-center items-center py-xs">
-                  <span className="text-h3 font-semibold text-primary leading-tight text-center" dir="auto">
+                  <span className="text-[22px] font-semibold text-primary leading-tight text-center" dir="auto">
                     {item.value}
                   </span>
                 </div>
 
                 {/* Row 3: small label */}
                 <div className="flex justify-center items-start">
-                  <span className="text-small text-text/80 whitespace-pre-line text-center">
+                  <span className="text-[15px] text-text/80 whitespace-pre-line text-center">
                     {item.label}
                   </span>
                 </div>
