@@ -19,7 +19,7 @@ export function HeroSection({
   photoAlt,
 }: HeroSectionProps) {
   return (
-    <section className="min-h-[60vh] flex items-center bg-background py-2xl relative overflow-hidden">
+    <section className="flex items-center bg-background py-2xl relative overflow-hidden">
 
       {/* Tree2 — full section background, visible behind both columns */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -56,7 +56,7 @@ export function HeroSection({
 
           {/* Photo column */}
           <div className="flex-1 flex justify-center order-1 md:order-2 w-full">
-            <div className="relative w-full max-w-[360px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
+            <div className="relative w-full max-w-[240px] md:max-w-[360px] aspect-[4/5] rounded-card overflow-hidden bg-neutral">
               <Image
                 src="/images/Sonya Final.jpeg"
                 alt={photoAlt}
