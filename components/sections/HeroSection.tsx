@@ -40,7 +40,7 @@ export function HeroSection({
 
             {/* Nameplate — large, sage green, comes first */}
             {nameplate && (
-              <p className="text-[26px] md:text-[34px] font-semibold text-primary leading-snug whitespace-pre-line">
+              <p className="text-[17px] md:text-[30px] font-semibold text-primary leading-snug whitespace-pre-line">
                 {nameplate}
               </p>
             )}
