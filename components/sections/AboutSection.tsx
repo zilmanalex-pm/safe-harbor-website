@@ -49,7 +49,7 @@ export function AboutSection({
 
         {/* h1 — visible as page header when showPageHeadline, otherwise sr-only for SEO */}
         {showPageHeadline ? (
-          <h1 className="text-4xl md:text-h1 font-semibold text-primary leading-[1.15]">{h1}</h1>
+          <h1 className="text-[24px] md:text-[32px] font-semibold text-primary leading-[1.15]">{h1}</h1>
         ) : (
           <h1 className="sr-only">{h1}</h1>
         )}

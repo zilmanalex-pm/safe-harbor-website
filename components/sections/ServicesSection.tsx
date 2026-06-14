@@ -24,7 +24,7 @@ export function ServicesSection({ headline, subheadline, services }: ServicesSec
 
         {/* Page header */}
         <div className="mb-3xl max-w-[720px]">
-          <h1 className="text-4xl md:text-h1 font-semibold text-primary leading-[1.15] mb-md">
+          <h1 className="text-[24px] md:text-[32px] font-semibold text-primary leading-[1.15] mb-md">
             {headline}
           </h1>
           {subheadline && (
