@@ -12,7 +12,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'about' })
   return {
-    title: locale === 'he' ? 'גישות טיפוליות | סופיה טרסוב' : 'Терапевтические подходы | София Тарасов',
+    title: locale === 'he' ? 'גישות טיפוליות | סופיה טרסוב' : 'Мои подходы | София Тарасов',
     description: locale === 'he'
       ? 'הגישה הטיפולית של סופיה טרסוב, פסיכותרפיסטית בראשון לציון'
       : 'Профессиональный подход Софии Тарасов, психотерапевта в Ришон-ле-Ционе',
@@ -28,7 +28,7 @@ export default async function ApproachPage({
 
   return (
     <AboutSection
-      h1={locale === 'he' ? 'גישות טיפוליות' : 'Терапевтические подходы'}
+      h1={locale === 'he' ? 'גישות טיפוליות' : 'Мои подходы'}
       approachHeadline={t('approach.headline')}
       approachQuote={(() => { try { return t('approach.quote') } catch { return undefined } })()}
       approach={t('approach.body')}
