@@ -9,6 +9,7 @@ interface Therapy {
 
 interface AboutSectionProps {
   h1: string
+  showPageHeadline?: boolean
   openingHeadline?: string
   opening?: string
   approachHeadline: string
@@ -26,6 +27,7 @@ interface AboutSectionProps {
 
 export function AboutSection({
   h1,
+  showPageHeadline = false,
   approachHeadline,
   approachQuote,
   approach,
@@ -45,8 +47,12 @@ export function AboutSection({
     <article className="bg-background py-3xl">
       <div className="w-full max-w-[1200px] mx-auto px-lg flex flex-col gap-lg">
 
-        {/* h1 hidden visually — kept for SEO */}
-        <h1 className="sr-only">{h1}</h1>
+        {/* h1 — visible as page header when showPageHeadline, otherwise sr-only for SEO */}
+        {showPageHeadline ? (
+          <h1 className="text-4xl md:text-h1 font-semibold text-primary leading-[1.15]">{h1}</h1>
+        ) : (
+          <h1 className="sr-only">{h1}</h1>
+        )}
 
         {/* CARD 1: Background */}
         {(variant === 'both' || variant === 'background') && (

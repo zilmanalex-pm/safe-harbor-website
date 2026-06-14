@@ -29,6 +29,7 @@ export default async function ApproachPage({
   return (
     <AboutSection
       h1={locale === 'he' ? 'גישות טיפוליות' : 'Мои подходы'}
+      showPageHeadline={true}
       approachHeadline={t('approach.headline')}
       approachQuote={(() => { try { return t('approach.quote') } catch { return undefined } })()}
       approach={t('approach.body')}
