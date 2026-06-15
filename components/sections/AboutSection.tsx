@@ -9,6 +9,7 @@ interface Therapy {
 
 interface AboutSectionProps {
   h1: string
+  pageHeadline?: string
   showPageHeadline?: boolean
   openingHeadline?: string
   opening?: string
@@ -27,6 +28,7 @@ interface AboutSectionProps {
 
 export function AboutSection({
   h1,
+  pageHeadline,
   showPageHeadline = false,
   approachHeadline,
   approachQuote,
@@ -47,11 +49,12 @@ export function AboutSection({
     <article className="bg-background py-3xl">
       <div className="w-full max-w-[1200px] mx-auto px-lg flex flex-col gap-lg">
 
-        {/* h1 — visible as page header when showPageHeadline, otherwise sr-only for SEO */}
-        {showPageHeadline ? (
-          <h1 className="text-[24px] md:text-[32px] font-semibold text-primary leading-[1.15]">{h1}</h1>
-        ) : (
-          <h1 className="sr-only">{h1}</h1>
+        {/* h1 — sr-only for SEO; optional visible display headline above cards */}
+        <h1 className="sr-only">{h1}</h1>
+        {(pageHeadline || showPageHeadline) && (
+          <p className="text-[24px] md:text-[32px] font-semibold text-primary leading-[1.15]">
+            {pageHeadline ?? h1}
+          </p>
         )}
 
         {/* CARD 1: Background */}

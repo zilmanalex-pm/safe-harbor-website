@@ -19,8 +19,6 @@ import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 import { AccessibilityButton } from '@/components/layout/AccessibilityButton'
 import { UserWayInit } from '@/components/layout/UserWayInit'
-import { UnderConstruction } from '@/components/UnderConstruction'
-
 import '@/app/globals.css'
 
 // ─────────────────────────────────────────────
@@ -136,10 +134,7 @@ export default async function LocaleLayout({
 
       <UserWayInit locale={locale} />
 
-      {/* ── UNDER CONSTRUCTION — remove <UnderConstruction> once site updates are complete ── */}
-      <UnderConstruction locale={locale} />
-
-      <NextIntlClientProvider messages={messages}>
+<NextIntlClientProvider messages={messages}>
         <Header
           siteName={tShared('siteName')}
           links={navLinks}

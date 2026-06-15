@@ -26,6 +26,7 @@ export default async function AboutPage({
       <PersonSchema />
       <AboutSection
         h1={t('h1')}
+        pageHeadline={locale === 'he' ? 'אודות' : 'Обо мне'}
         openingHeadline={t('opening.headline')}
         opening={t('opening.body')}
         approachHeadline={t('approach.headline')}
