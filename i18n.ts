@@ -1,6 +1,7 @@
 // i18n.ts — Safe Harbor
 // Loads content from Sanity CMS via plain fetch.
 // Falls back to local JSON files if Sanity is unreachable or documents are missing.
+// To edit content: open /studio → make changes → Publish → site rebuilds automatically.
 
 import { getRequestConfig } from 'next-intl/server'
 
@@ -32,12 +33,7 @@ async function fetchFromSanity(locale: string) {
       groq(`*[_type == "servicesPage"  && locale == $locale][0]{ meta, headline, subheadline, services[]{ slug, name, description, image } }`, { locale }),
     ])
 
-    console.log('[i18n] Sanity result for', locale, { shared: !!shared, home: !!home, about: !!about, services: !!services })
-
-    if (!shared || !home || !about || !services) {
-      console.log('[i18n] Core doc missing — using JSON')
-      return null
-    }
+    if (!shared || !home || !about || !services) return null
 
     const [approach, faq, contact] = await Promise.all([
       groq(`*[_type == "approachPage" && locale == $locale][0]{ meta, h1, headline, quote, body, therapies, closing }`, { locale }).catch(() => null),
@@ -45,10 +41,8 @@ async function fetchFromSanity(locale: string) {
       groq(`*[_type == "contactPage"  && locale == $locale][0]{ meta, headline, intro, form, info }`,                   { locale }).catch(() => null),
     ])
 
-    console.log('[i18n] Using Sanity for', locale)
     return { shared, home, about, approach: approach ?? {}, services, faq: faq ?? {}, contact: contact ?? {} }
-  } catch (err) {
-    console.error('[i18n] Sanity error:', err)
+  } catch {
     return null
   }
 }
@@ -62,7 +56,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     return { locale, messages: sanityData }
   }
 
-  console.log('[i18n] JSON fallback for', locale)
+  // Fallback to local JSON files
   const [shared, home, about, approach, services, faq, contact] = await Promise.all([
     import(`./content/${locale}/shared.json`),
     import(`./content/${locale}/home.json`),
