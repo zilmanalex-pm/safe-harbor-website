@@ -22,8 +22,8 @@ export const sharedSchema = defineType({
       fields: [
         defineField({ name: 'home',     type: 'string', title: 'Home' }),
         defineField({ name: 'about',    type: 'string', title: 'About' }),
-        defineField({ name: 'services', type: 'string', title: 'Services' }),
-        defineField({ name: 'faq',      type: 'string', title: 'FAQ' }),
+        defineField({ name: 'approach', type: 'string', title: 'Approach page' }),
+        defineField({ name: 'services', type: 'string', title: 'Services / Specializations' }),
         defineField({ name: 'contact',  type: 'string', title: 'Contact' }),
         defineField({ name: 'cta',      type: 'string', title: 'Header CTA button' }),
       ],
@@ -33,6 +33,8 @@ export const sharedSchema = defineType({
       title: 'Footer',
       type: 'object',
       fields: [
+        defineField({ name: 'tagline',  type: 'string', title: 'Footer tagline' }),
+        defineField({ name: 'drawings', type: 'string', title: 'Drawings credit line' }),
         defineField({ name: 'copyright', type: 'string', title: 'Copyright text' }),
       ],
     }),

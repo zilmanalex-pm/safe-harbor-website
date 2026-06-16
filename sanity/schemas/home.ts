@@ -23,8 +23,8 @@ export const homeSchema = defineType({
       type: 'object',
       fields: [
         defineField({ name: 'headline',  type: 'string', title: 'Main headline' }),
-        defineField({ name: 'nameplate', type: 'string', title: 'Nameplate (name · credentials · location)' }),
-        defineField({ name: 'photoAlt', type: 'string', title: 'Photo alt text' }),
+        defineField({ name: 'nameplate', type: 'text',   title: 'Nameplate — use \\n for line breaks', rows: 3 }),
+        defineField({ name: 'photoAlt',  type: 'string', title: 'Photo alt text' }),
       ],
     }),
     defineField({
@@ -37,7 +37,7 @@ export const homeSchema = defineType({
     }),
     defineField({
       name: 'trust',
-      title: 'Trust bar (3 stat blocks)',
+      title: 'Trust bar',
       type: 'object',
       fields: [
         defineField({
@@ -48,16 +48,25 @@ export const homeSchema = defineType({
             {
               type: 'object',
               fields: [
-                defineField({ name: 'value', type: 'string', title: 'Value (e.g. "2017")' }),
-                defineField({ name: 'label', type: 'string', title: 'Label' }),
+                defineField({ name: 'value', type: 'string', title: 'Value (e.g. "10+")' }),
+                defineField({ name: 'label', type: 'text',   title: 'Label — use \\n for line breaks', rows: 2 }),
               ],
             },
           ],
         }),
       ],
     }),
+    defineField({
+      name: 'cta',
+      title: 'CTA block',
+      type: 'object',
+      fields: [
+        defineField({ name: 'body',        type: 'text',   title: 'Text', rows: 2 }),
+        defineField({ name: 'buttonLabel', type: 'string', title: 'Button label' }),
+      ],
+    }),
   ],
   preview: {
-    select: { title: 'hero.headline', subtitle: 'locale' },
+    select: { title: 'hero.nameplate', subtitle: 'locale' },
   },
 })
