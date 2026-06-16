@@ -1,5 +1,5 @@
 // i18n.ts — Safe Harbor
-// Loads content from Sanity CMS via plain fetch (no client package).
+// Loads content from Sanity CMS via plain fetch.
 // Falls back to local JSON files if Sanity is unreachable or documents are missing.
 
 import { getRequestConfig } from 'next-intl/server'
@@ -11,22 +11,20 @@ const DATASET    = 'production'
 const API_VER    = '2024-01-01'
 const BASE       = `https://${PROJECT_ID}.api.sanity.io/v${API_VER}/data/query/${DATASET}`
 
-async function groq(query: string, params: Record<string, string> = {}) {
+async function groq(query: string, params: Record<string, string> = {}): Promise<any> {
   const url = new URL(BASE)
   url.searchParams.set('query', query)
   for (const [k, v] of Object.entries(params)) {
     url.searchParams.set(`$${k}`, JSON.stringify(v))
   }
-  const res = await fetch(url.toString(), { next: { revalidate: 60 } })
-  if (!res.ok) throw new Error(`Sanity ${res.status}: ${res.statusText}`)
+  const res = await fetch(url.toString())
+  if (!res.ok) throw new Error(`Sanity HTTP ${res.status}`)
   const json = await res.json()
   return json.result ?? null
 }
 
 async function fetchFromSanity(locale: string) {
   try {
-    const loc = `"${locale}"`
-
     const [shared, home, about, services] = await Promise.all([
       groq(`*[_type == "sharedContent" && locale == $locale][0]{ siteName, whatsapp, nav, footer }`, { locale }),
       groq(`*[_type == "homePage"      && locale == $locale][0]{ meta, hero, intro, trust, cta }`,   { locale }),
@@ -34,10 +32,10 @@ async function fetchFromSanity(locale: string) {
       groq(`*[_type == "servicesPage"  && locale == $locale][0]{ meta, headline, subheadline, services[]{ slug, name, description, image } }`, { locale }),
     ])
 
-    console.log('[i18n] Sanity fetch for', locale, { shared: !!shared, home: !!home, about: !!about, services: !!services })
+    console.log('[i18n] Sanity result for', locale, { shared: !!shared, home: !!home, about: !!about, services: !!services })
 
     if (!shared || !home || !about || !services) {
-      console.log('[i18n] Missing core doc — falling back to JSON')
+      console.log('[i18n] Core doc missing — using JSON')
       return null
     }
 
@@ -47,7 +45,7 @@ async function fetchFromSanity(locale: string) {
       groq(`*[_type == "contactPage"  && locale == $locale][0]{ meta, headline, intro, form, info }`,                   { locale }).catch(() => null),
     ])
 
-    console.log('[i18n] Using Sanity data for', locale)
+    console.log('[i18n] Using Sanity for', locale)
     return { shared, home, about, approach: approach ?? {}, services, faq: faq ?? {}, contact: contact ?? {} }
   } catch (err) {
     console.error('[i18n] Sanity error:', err)
@@ -64,7 +62,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     return { locale, messages: sanityData }
   }
 
-  console.log('[i18n] Using JSON fallback for', locale)
+  console.log('[i18n] JSON fallback for', locale)
   const [shared, home, about, approach, services, faq, contact] = await Promise.all([
     import(`./content/${locale}/shared.json`),
     import(`./content/${locale}/home.json`),
