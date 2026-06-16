@@ -40,6 +40,16 @@ export default defineConfig({
                   ])
               ),
             S.listItem()
+              .title('Approach page')
+              .child(
+                S.list()
+                  .title('Approach')
+                  .items([
+                    S.documentListItem().schemaType('approachPage').id('approachPage-he').title('Hebrew'),
+                    S.documentListItem().schemaType('approachPage').id('approachPage-ru').title('Russian'),
+                  ])
+              ),
+            S.listItem()
               .title('Services page')
               .child(
                 S.list()

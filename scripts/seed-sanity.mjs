@@ -58,6 +58,7 @@ async function seed() {
     const shared   = readJson(locale, 'shared')
     const home     = readJson(locale, 'home')
     const about    = readJson(locale, 'about')
+    const approach = readJson(locale, 'approach')
     const services = readJson(locale, 'services')
     const faq      = readJson(locale, 'faq')
     const contact  = readJson(locale, 'contact')
@@ -93,6 +94,18 @@ async function seed() {
         background: about.background,
         closing:    about.closing,
         photoAlt:   about.photoAlt,
+      },
+      {
+        _id:  `approachPage-${locale}`,
+        _type: 'approachPage',
+        locale,
+        meta:      approach.meta,
+        h1:        approach.h1,
+        headline:  approach.headline,
+        quote:     approach.quote,
+        body:      approach.body,
+        therapies: withKeys(approach.therapies),
+        closing:   approach.closing,
       },
       {
         _id:  `servicesPage-${locale}`,

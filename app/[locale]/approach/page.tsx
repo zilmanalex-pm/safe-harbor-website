@@ -10,7 +10,6 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'about' })
   return {
     title: locale === 'he' ? 'גישות טיפוליות | סופיה טרסוב' : 'Мои подходы | София Тарасов',
     description: locale === 'he'
@@ -24,20 +23,20 @@ export default async function ApproachPage({
 }: {
   params: { locale: string }
 }) {
-  const t = await getTranslations({ locale, namespace: 'about' })
+  const t = await getTranslations({ locale, namespace: 'approach' })
 
   return (
     <AboutSection
-      h1={locale === 'he' ? 'גישות טיפוליות' : 'Мои подходы'}
+      h1={t('h1')}
       showPageHeadline={true}
-      approachHeadline={t('approach.headline')}
-      approachQuote={(() => { try { return t('approach.quote') } catch { return undefined } })()}
-      approach={t('approach.body')}
-      therapies={(() => { try { return t.raw('approach.therapies') as Array<{name: string; body: string}> } catch { return undefined } })()}
+      approachHeadline={(() => { try { return t('headline') } catch { return '' } })()}
+      approachQuote={(() => { try { return t('quote') } catch { return undefined } })()}
+      approach={t('body')}
+      therapies={(() => { try { return t.raw('therapies') as Array<{name: string; body: string}> } catch { return undefined } })()}
       backgroundHeadline=""
       background=""
-      closing={t('closing.body')}
-      photoAlt={t('photoAlt')}
+      closing={(() => { try { return t('closing') } catch { return '' } })()}
+      photoAlt=""
       variant="approach"
     />
   )

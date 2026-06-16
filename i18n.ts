@@ -1,7 +1,7 @@
 // i18n.ts — Safe Harbor
 // Loads content from Sanity CMS.
 // Falls back to local JSON files if Sanity is unreachable or documents are missing.
-// To edit content: go to sanity.io → project xmlbv2oe → Studio → publish → site rebuilds.
+// To edit content: go to your Sanity Studio → publish → site rebuilds automatically.
 
 import { getRequestConfig } from 'next-intl/server'
 import { sanityClient } from '@/lib/sanity'
@@ -29,10 +29,26 @@ async function fetchFromSanity(locale: string) {
       ),
     ])
 
-    // If any core document is missing, fall back to JSON
-    if (!shared || !home || !about || !services) return null
+    // Log what we got so we can see it in Vercel logs
+    console.log('[i18n] Sanity fetch for', locale, {
+      shared: !!shared,
+      home: !!home,
+      about: !!about,
+      services: !!services,
+    })
 
-    const [faq, contact] = await Promise.all([
+    // If any core document is missing, fall back to JSON
+    if (!shared || !home || !about || !services) {
+      console.log('[i18n] Missing core doc — falling back to JSON')
+      return null
+    }
+
+    // Optional pages — fall back to {} if missing
+    const [approach, faq, contact] = await Promise.all([
+      sanityClient.fetch(
+        `*[_type == "approachPage" && locale == $locale][0]{ meta, h1, headline, quote, body, therapies, closing }`,
+        { locale }
+      ).catch(() => null),
       sanityClient.fetch(
         `*[_type == "faqPage" && locale == $locale][0]{ meta, headline, faqs }`,
         { locale }
@@ -43,8 +59,18 @@ async function fetchFromSanity(locale: string) {
       ).catch(() => null),
     ])
 
-    return { shared, home, about, services, faq: faq ?? {}, contact: contact ?? {} }
-  } catch {
+    console.log('[i18n] Using Sanity data for', locale)
+    return {
+      shared,
+      home,
+      about,
+      approach: approach ?? {},
+      services,
+      faq:     faq     ?? {},
+      contact: contact ?? {},
+    }
+  } catch (err) {
+    console.error('[i18n] Sanity error:', err)
     return null
   }
 }
@@ -60,10 +86,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
   }
 
   // Fall back to JSON files
-  const [shared, home, about, services, faq, contact] = await Promise.all([
+  console.log('[i18n] Using JSON fallback for', locale)
+  const [shared, home, about, approach, services, faq, contact] = await Promise.all([
     import(`./content/${locale}/shared.json`),
     import(`./content/${locale}/home.json`),
     import(`./content/${locale}/about.json`),
+    import(`./content/${locale}/approach.json`),
     import(`./content/${locale}/services.json`),
     import(`./content/${locale}/faq.json`),
     import(`./content/${locale}/contact.json`),
@@ -75,6 +103,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       shared:   (shared   as any).default ?? shared,
       home:     (home     as any).default ?? home,
       about:    (about    as any).default ?? about,
+      approach: (approach as any).default ?? approach,
       services: (services as any).default ?? services,
       faq:      (faq      as any).default ?? faq,
       contact:  (contact  as any).default ?? contact,
