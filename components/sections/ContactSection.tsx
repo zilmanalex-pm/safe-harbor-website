@@ -1,5 +1,5 @@
 // components/sections/ContactSection.tsx — Safe Harbor
-// Simple contact methods page: WhatsApp, email, phone + drawing placeholder.
+// Simple contact methods page: numbered list (WhatsApp, email, phone) + drawing placeholder.
 
 interface ContactSectionProps {
   h1: string
@@ -22,9 +22,9 @@ export function ContactSection({
   phone,
   whatsapp,
 }: ContactSectionProps) {
-  const waHref = `https://wa.me/${whatsapp}`
+  const waHref    = `https://wa.me/${whatsapp}`
   const emailHref = `mailto:${email}`
-  const telHref = `tel:+972${phone.replace(/^0/, '')}`
+  const telHref   = `tel:+972${phone.replace(/^0/, '')}`
 
   return (
     <section className="bg-background py-3xl">
@@ -41,46 +41,52 @@ export function ContactSection({
               {headline}
             </p>
 
-            <div className="flex flex-col gap-lg">
+            <ol className="flex flex-col gap-lg list-none">
 
-              {/* WhatsApp */}
-              <div className="flex flex-col gap-xs">
-                <span className="text-[13px] font-semibold text-text/50 uppercase tracking-wide">WhatsApp</span>
+              {/* 1. WhatsApp */}
+              <li className="flex items-center gap-md">
+                <span className="text-text/35 font-medium text-[15px] shrink-0 w-5 select-none">1.</span>
                 <a
                   href={waHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-sm self-start bg-primary text-white text-[15px] font-semibold px-lg py-sm rounded-pill hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center gap-sm bg-primary text-white text-[15px] font-semibold px-lg py-sm rounded-pill hover:bg-primary/90 transition-colors"
                 >
                   {whatsappLabel}
                 </a>
-              </div>
+              </li>
 
-              {/* Email */}
-              <div className="flex flex-col gap-xs">
-                <span className="text-[13px] font-semibold text-text/50 uppercase tracking-wide">{emailLabel}</span>
-                <a
-                  href={emailHref}
-                  className="text-[17px] text-primary hover:underline underline-offset-4 font-medium"
-                  dir="ltr"
-                >
-                  {email}
-                </a>
-              </div>
+              {/* 2. Email */}
+              <li className="flex items-center gap-md">
+                <span className="text-text/35 font-medium text-[15px] shrink-0 w-5 select-none">2.</span>
+                <div className="flex flex-col gap-[2px]">
+                  <span className="text-[12px] font-semibold text-text/45 uppercase tracking-wide">{emailLabel}</span>
+                  <a
+                    href={emailHref}
+                    className="text-[17px] text-primary hover:underline underline-offset-4 font-medium"
+                    dir="ltr"
+                  >
+                    {email}
+                  </a>
+                </div>
+              </li>
 
-              {/* Phone */}
-              <div className="flex flex-col gap-xs">
-                <span className="text-[13px] font-semibold text-text/50 uppercase tracking-wide">{phoneLabel}</span>
-                <a
-                  href={telHref}
-                  className="text-[17px] text-primary hover:underline underline-offset-4 font-medium"
-                  dir="ltr"
-                >
-                  {phone}
-                </a>
-              </div>
+              {/* 3. Phone */}
+              <li className="flex items-center gap-md">
+                <span className="text-text/35 font-medium text-[15px] shrink-0 w-5 select-none">3.</span>
+                <div className="flex flex-col gap-[2px]">
+                  <span className="text-[12px] font-semibold text-text/45 uppercase tracking-wide">{phoneLabel}</span>
+                  <a
+                    href={telHref}
+                    className="text-[17px] text-primary hover:underline underline-offset-4 font-medium"
+                    dir="ltr"
+                  >
+                    {phone}
+                  </a>
+                </div>
+              </li>
 
-            </div>
+            </ol>
           </div>
 
           {/* Drawing placeholder */}
