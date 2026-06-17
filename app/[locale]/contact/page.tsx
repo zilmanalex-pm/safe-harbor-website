@@ -19,23 +19,21 @@ export default async function ContactPage({
 }: {
   params: { locale: string }
 }) {
-  const t = await getTranslations({ locale, namespace: 'contact' })
+  const t  = await getTranslations({ locale, namespace: 'contact' })
+  const ts = await getTranslations({ locale, namespace: 'shared' })
 
   return (
     <>
       <LocalBusinessSchema />
       <ContactSection
         h1={t('h1')}
-        intro={t('intro.body')}
-        responseTime={t('responseTime')}
-        nameLabel={t('form.nameLabel')}
-        emailLabel={t('form.emailLabel')}
-        phoneLabel={t('form.phoneLabel')}
-        messageLabel={t('form.messageLabel')}
-        submitLabel={t('form.submitLabel')}
-        validationMessage={t('form.validationMessage')}
-        successMessage={t('form.successMessage')}
-        errorMessage={t('form.errorMessage')}
+        headline={t('headline')}
+        whatsappLabel={t('whatsappLabel')}
+        emailLabel={t('emailLabel')}
+        phoneLabel={t('phoneLabel')}
+        email={t('email')}
+        phone={t('phone')}
+        whatsapp={ts('whatsapp')}
       />
     </>
   )

@@ -7,7 +7,7 @@ export const contactSchema = defineType({
   title: 'Contact page',
   type: 'document',
   fields: [
-    defineField({ name: 'locale', title: 'Locale', type: 'string', readOnly: true }),
+    defineField({ name: 'locale',       title: 'Locale',                    type: 'string', readOnly: true }),
     defineField({
       name: 'meta',
       title: 'SEO',
@@ -17,32 +17,15 @@ export const contactSchema = defineType({
         defineField({ name: 'description', type: 'text',   title: 'Meta description', rows: 2 }),
       ],
     }),
-    defineField({ name: 'h1', title: 'Page H1', type: 'string' }),
-    defineField({
-      name: 'intro',
-      title: 'Intro text',
-      type: 'object',
-      fields: [
-        defineField({ name: 'body', type: 'text', title: 'Text', rows: 3 }),
-      ],
-    }),
-    defineField({ name: 'responseTime', title: 'Response time note', type: 'string' }),
-    defineField({
-      name: 'form',
-      title: 'Form labels',
-      type: 'object',
-      fields: [
-        defineField({ name: 'nameLabel',      type: 'string', title: 'Name field label' }),
-        defineField({ name: 'emailLabel',     type: 'string', title: 'Email field label' }),
-        defineField({ name: 'phoneLabel',     type: 'string', title: 'Phone field label' }),
-        defineField({ name: 'messageLabel',   type: 'string', title: 'Message field label' }),
-        defineField({ name: 'submitLabel',    type: 'string', title: 'Submit button label' }),
-        defineField({ name: 'successMessage', type: 'string', title: 'Success message' }),
-        defineField({ name: 'errorMessage',   type: 'string', title: 'Error message' }),
-      ],
-    }),
+    defineField({ name: 'h1',           title: 'SEO h1 (hidden)',           type: 'string' }),
+    defineField({ name: 'headline',     title: 'Page headline (visible)',    type: 'string' }),
+    defineField({ name: 'whatsappLabel', title: 'WhatsApp button label',    type: 'string' }),
+    defineField({ name: 'emailLabel',   title: 'Email label',               type: 'string' }),
+    defineField({ name: 'phoneLabel',   title: 'Phone label',               type: 'string' }),
+    defineField({ name: 'email',        title: 'Email address',             type: 'string' }),
+    defineField({ name: 'phone',        title: 'Phone number (local format)', type: 'string' }),
   ],
   preview: {
-    select: { title: 'intro.body', subtitle: 'locale' },
+    select: { title: 'headline', subtitle: 'locale' },
   },
 })

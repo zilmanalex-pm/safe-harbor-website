@@ -38,7 +38,7 @@ async function fetchFromSanity(locale: string) {
     const [approach, faq, contact] = await Promise.all([
       groq(`*[_type == "approachPage" && locale == $locale][0]{ meta, h1, headline, quote, body, therapies, closing }`, { locale }).catch(() => null),
       groq(`*[_type == "faqPage"      && locale == $locale][0]{ meta, headline, faqs }`,                                { locale }).catch(() => null),
-      groq(`*[_type == "contactPage"  && locale == $locale][0]{ meta, headline, intro, form, info }`,                   { locale }).catch(() => null),
+      groq(`*[_type == "contactPage"  && locale == $locale][0]{ meta, h1, headline, whatsappLabel, emailLabel, phoneLabel, email, phone }`, { locale }).catch(() => null),
     ])
 
     return { shared, home, about, approach: approach ?? {}, services, faq: faq ?? {}, contact: contact ?? {} }
