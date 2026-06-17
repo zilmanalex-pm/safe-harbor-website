@@ -1,5 +1,7 @@
 // components/sections/ContactSection.tsx — Safe Harbor
-// Simple contact methods page: numbered list (WhatsApp, email, phone) + drawing placeholder.
+// Simple contact methods page: numbered list (WhatsApp, email, phone) + drawing.
+
+import Image from 'next/image'
 
 interface ContactSectionProps {
   h1: string
@@ -89,9 +91,15 @@ export function ContactSection({
             </ol>
           </div>
 
-          {/* Drawing placeholder */}
-          <div className="relative w-full md:w-[40%] shrink-0 min-h-[320px] rounded-card border border-dashed border-neutral/60 flex items-center justify-center bg-neutral/5">
-            <p className="text-[13px] text-text/30 select-none">drawing coming soon</p>
+          {/* Drawing */}
+          <div className="relative w-full md:w-[40%] shrink-0 min-h-[320px] rounded-card overflow-hidden">
+            <Image
+              src="/images/contact1.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 40vw"
+            />
           </div>
 
         </div>
