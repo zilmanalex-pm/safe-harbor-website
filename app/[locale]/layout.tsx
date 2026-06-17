@@ -90,6 +90,7 @@ export default async function LocaleLayout({
     { href: `/${locale}/about`, label: t('about') },
     { href: `/${locale}/approach`, label: t('approach') },
     { href: `/${locale}/services`, label: t('services') },
+    { href: `/${locale}/contact`, label: t('contact') },
   ]
 
   const tFooter = await getTranslations({ locale, namespace: 'shared.footer' })
