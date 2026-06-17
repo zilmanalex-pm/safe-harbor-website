@@ -140,7 +140,7 @@ export default async function LocaleLayout({
           siteName={tShared('siteName')}
           links={navLinks}
           ctaLabel={t('cta')}
-          ctaHref={`https://wa.me/${tShared('whatsapp')}`}
+          ctaHref={`/${locale}/contact`}
           locale={locale as Locale}
         />
         <main>

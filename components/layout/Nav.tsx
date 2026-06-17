@@ -61,14 +61,12 @@ export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
         {/* Desktop right side: locale switcher + CTA */}
         <div className="hidden md:flex items-center gap-sm">
           <LocaleSwitcher currentLocale={locale} />
-          <a
+          <Link
             href={ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
             className="text-sm text-text/70 hover:text-primary transition-colors"
           >
             {ctaLabel}
-          </a>
+          </Link>
         </div>
 
         {/* Mobile: locale switcher always visible + hamburger */}
@@ -117,15 +115,13 @@ export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
           </ul>
 
           {/* CTA link */}
-          <a
+          <Link
             href={ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
             className="block text-text/80 hover:text-primary text-body transition-colors py-xs"
           >
             {ctaLabel}
-          </a>
+          </Link>
         </div>
       )}
     </>
