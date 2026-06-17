@@ -9,6 +9,7 @@ import { X, Menu } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { NavProps } from '@/types/components'
 import { LocaleSwitcher } from './LocaleSwitcher'
+import { buttonVariants } from '@/components/ui/button'
 
 export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -61,10 +62,7 @@ export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
         {/* Desktop right side: locale switcher + CTA */}
         <div className="hidden md:flex items-center gap-sm">
           <LocaleSwitcher currentLocale={locale} />
-          <Link
-            href={ctaHref}
-            className="text-sm text-text/70 hover:text-primary transition-colors"
-          >
+          <Link href={ctaHref} className={cn(buttonVariants({ size: 'sm' }))}>
             {ctaLabel}
           </Link>
         </div>
@@ -114,11 +112,11 @@ export function Nav({ siteName, links, ctaLabel, ctaHref, locale }: NavProps) {
             ))}
           </ul>
 
-          {/* CTA link */}
+          {/* CTA button */}
           <Link
             href={ctaHref}
             onClick={() => setMobileOpen(false)}
-            className="block text-text/80 hover:text-primary text-body transition-colors py-xs"
+            className={cn(buttonVariants({ size: 'sm' }), 'w-full text-center mt-sm')}
           >
             {ctaLabel}
           </Link>
